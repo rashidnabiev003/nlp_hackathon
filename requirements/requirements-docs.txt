@@ -1,4 +1,4 @@
-﻿sphinx
-sphinx-autoapi
 
 -r requirements-cpu.txt
+sphinx
+sphinx-autoapi
