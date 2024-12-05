@@ -36,7 +36,7 @@ repos:
       - id: check-merge-conflict
       - id: check-shebang-scripts-are-executable
       - id: end-of-file-fixer
-      - id: requirements-txt-fixer
+      # - id: requirements-txt-fixer # TODO: following check is disabled because it breaks requirements.txt
       - id: trailing-whitespace
       - id: detect-private-key
   - repo: 'https://github.com/pycqa/isort'
