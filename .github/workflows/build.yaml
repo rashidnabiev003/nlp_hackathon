@@ -1,0 +1,41 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+      - tests_docs
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10.12
+
+      - name: Install dependencies
+        run: make DEVICE=cpu install_all
+
+      - name: Static code analysis
+        run: make ci_static_code_analysis
+
+      - name: Run tests
+        run: make ci_test
+
+      - id: deployment
+        uses: sphinx-notes/pages@v3
+        with:
+          publish: false
+          documentation_path: ./docs/source
+          requirements_path: ./requirements/requirements-cpu.txt
+
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ steps.deployment.outputs.artifact }}
