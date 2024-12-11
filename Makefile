@@ -23,5 +23,8 @@ install_all: venv
 
 # ================== CONTINUOUS INTEGRATION =================
 
+ci_test:
+	$(PYTHON) -m pytest tests
+
 ci_static_code_analysis:
 	$(PYTHON) -m pre_commit run --all-files

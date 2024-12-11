@@ -5,4 +5,5 @@ opencv-python-headless>=4.7.0.72
 pandas
 timm>=0.9.6
 wemake-python-styleguide
+flake8-tabs
 albumentations>=1.3.1
