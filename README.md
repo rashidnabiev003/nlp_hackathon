@@ -2,6 +2,9 @@
 
 Решение команды "Тимур и его команда".
 
+![test workflow](https://github.com/rashidnabiev003/nlp_hackathon/actions/workflows/build.yaml/badge.svg)
+![sphinx workflow](https://github.com/rashidnabiev003/nlp_hackathon/actions/workflows/pages/pages-build-deployment/badge.svg)
+
 ## Задача
 
 Предложить метод парсинга таблиц и списков документов (docx) для векторной базы данных для IRсистемы в составе QA чат-бота.
@@ -34,7 +37,8 @@ make install_all
 
 ## Документация
 
-Тут появится ссылка на документацию сделанная при помощи sphinx
+
+- **[Документация по библиотеке](https://rashidnabiev003.github.io/nlp_hackathon/)** - содержит описания из doc-string используемых модулей
 
 ## Лицензия
 
