@@ -1,0 +1,21 @@
+InformationRetrieval
+====================
+
+.. py:module:: InformationRetrieval
+
+.. autoapi-nested-parse::
+
+   Information Retrieval package for LM tasks.
+
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/InformationRetrieval/text_embedder/index
+   /autoapi/InformationRetrieval/text_parser/index
+
+

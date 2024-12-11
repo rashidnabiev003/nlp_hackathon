@@ -1,0 +1,98 @@
+InformationRetrieval.text_parser
+================================
+
+.. py:module:: InformationRetrieval.text_parser
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   InformationRetrieval.text_parser.MetadataValue
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   InformationRetrieval.text_parser.ParsedText
+   InformationRetrieval.text_parser.TextParser
+
+
+Module Contents
+---------------
+
+.. py:data:: MetadataValue
+
+.. py:class:: ParsedText
+
+   Data class to store parsed text information.
+
+
+   .. py:attribute:: tokens
+      :type:  List[str]
+
+
+   .. py:attribute:: word_count
+      :type:  int
+
+
+   .. py:attribute:: sentence_count
+      :type:  int
+
+
+   .. py:attribute:: metadata
+      :type:  Dict[str, MetadataValue]
+
+
+.. py:class:: TextParser(language: str = 'en')
+
+   Text parser for IR tasks with basic preprocessing capabilities.
+
+
+   .. py:attribute:: language
+      :value: 'en'
+
+
+
+   .. py:attribute:: _sentence_end_markers
+
+
+   .. py:method:: tokenize(text: str) -> List[str]
+
+      Tokenize text into words.
+
+      Args:
+              text: Input text to tokenize
+
+      Returns:
+              List of tokens
+
+
+
+   .. py:method:: count_sentences(text: str) -> int
+
+      Count number of sentences in text.
+
+      Args:
+              text: Input text
+
+      Returns:
+              Number of sentences
+
+
+
+   .. py:method:: parse(text: str) -> ParsedText
+
+      Parse text and return structured information.
+
+      Args:
+              text: Input text to parse
+
+      Returns:
+              ParsedText object with parsing results
+
+
+

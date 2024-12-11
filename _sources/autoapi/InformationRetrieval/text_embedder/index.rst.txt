@@ -1,0 +1,70 @@
+InformationRetrieval.text_embedder
+==================================
+
+.. py:module:: InformationRetrieval.text_embedder
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   InformationRetrieval.text_embedder.TextEmbedder
+
+
+Module Contents
+---------------
+
+.. py:class:: TextEmbedder(embedding_dim: int = 100, random_seed: int = 42)
+
+   Basic text embedder that converts text into vector representations.
+
+
+   .. py:attribute:: embedding_dim
+      :value: 100
+
+
+
+   .. py:attribute:: _rng
+
+
+   .. py:attribute:: _word_vectors
+      :type:  Dict[str, numpy.typing.NDArray]
+
+
+   .. py:method:: embed_word(word: str) -> numpy.typing.NDArray
+
+      Create embedding for a single word.
+
+      Args:
+              word: Input word
+
+      Returns:
+              Word embedding as numpy array
+
+
+
+   .. py:method:: embed_text(text: Union[str, List[str]]) -> numpy.typing.NDArray
+
+      Create embedding for text or list of tokens.
+
+      Args:
+              text: Input text or list of tokens
+
+      Returns:
+              Text embedding as numpy array
+
+
+
+   .. py:method:: _get_word_vector(word: str) -> numpy.typing.NDArray
+
+      Get vector for a single word, create if not exists.
+
+      Args:
+              word: Input word
+
+      Returns:
+              Word vector as numpy array
+
+
+
