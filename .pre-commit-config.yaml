@@ -47,7 +47,7 @@ repos:
     rev: 24.10.0
     hooks:
       - id: black
-        args: ["--skip-string-normalization", "--line-length=120", "--use-tabs"]
+        args: ["--skip-string-normalization", "--line-length=120"]
   - repo: https://github.com/asottile/add-trailing-comma
     rev: v3.1.0
     hooks:
