@@ -4,67 +4,114 @@ InformationRetrieval.text_embedder
 .. py:module:: InformationRetrieval.text_embedder
 
 
+Attributes
+----------
+
+.. autoapisummary::
+
+   InformationRetrieval.text_embedder.DEFAULT_BATCH_SIZE
+   InformationRetrieval.text_embedder.DEFAULT_RANDOM_SEED
+   InformationRetrieval.text_embedder.RUSSIAN_MODEL_MAPPING
+
+
 Classes
 -------
 
 .. autoapisummary::
 
    InformationRetrieval.text_embedder.TextEmbedder
+   InformationRetrieval.text_embedder.TransformerEmbedder
+   InformationRetrieval.text_embedder.MultilingualTransformerEmbedder
+   InformationRetrieval.text_embedder.HighQualityTransformerEmbedder
+   InformationRetrieval.text_embedder.RussianTransformerEmbedder
 
 
 Module Contents
 ---------------
 
-.. py:class:: TextEmbedder(embedding_dim: int = 100, random_seed: int = 42)
+.. py:data:: DEFAULT_BATCH_SIZE
+   :value: 32
 
-   Basic text embedder that converts text into vector representations.
+
+.. py:data:: DEFAULT_RANDOM_SEED
+   :value: 42
+
+
+.. py:data:: RUSSIAN_MODEL_MAPPING
+   :value: (('deeppavlov', 'DeepPavlov/rubert-base-cased-sentence'), ('sbert',...
+
+
+.. py:class:: TextEmbedder
+
+   Bases: :py:obj:`abc.ABC`
+
+
+   Abstract base class for text embedding.
+
+
+   .. py:method:: embed(text: Union[InformationRetrieval.text_parser.ParsedText, List[InformationRetrieval.text_parser.ParsedText]]) -> numpy.ndarray
+      :abstractmethod:
+
+
+      Convert text into vector embeddings.
+
+
+
+.. py:class:: TransformerEmbedder(model_name: str = 'all-MiniLM-L6-v2')
+
+   Bases: :py:obj:`TextEmbedder`
+
+
+   Text embedder using Sentence Transformers.
+
+
+   .. py:attribute:: model
 
 
    .. py:attribute:: embedding_dim
-      :value: 100
+
+
+   .. py:attribute:: batch_size
+      :value: 32
 
 
 
-   .. py:attribute:: _rng
+   .. py:method:: embed(text: Union[InformationRetrieval.text_parser.ParsedText, List[InformationRetrieval.text_parser.ParsedText]]) -> numpy.ndarray
 
-
-   .. py:attribute:: _word_vectors
-      :type:  Dict[str, numpy.typing.NDArray]
-
-
-   .. py:method:: embed_word(word: str) -> numpy.typing.NDArray
-
-      Create embedding for a single word.
+      Create embeddings using transformer model.
 
       Args:
-              word: Input word
+          text: ParsedText object or list of ParsedText objects
 
       Returns:
-              Word embedding as numpy array
+          numpy array of embeddings with shape (n_chunks, embedding_dim)
 
 
 
-   .. py:method:: embed_text(text: Union[str, List[str]]) -> numpy.typing.NDArray
+.. py:class:: MultilingualTransformerEmbedder
 
-      Create embedding for text or list of tokens.
-
-      Args:
-              text: Input text or list of tokens
-
-      Returns:
-              Text embedding as numpy array
+   Bases: :py:obj:`TransformerEmbedder`
 
 
+   Multilingual version of transformer embedder.
 
-   .. py:method:: _get_word_vector(word: str) -> numpy.typing.NDArray
 
-      Get vector for a single word, create if not exists.
+.. py:class:: HighQualityTransformerEmbedder
 
-      Args:
-              word: Input word
+   Bases: :py:obj:`TransformerEmbedder`
 
-      Returns:
-              Word vector as numpy array
 
+   High quality version of transformer embedder.
+
+
+.. py:class:: RussianTransformerEmbedder(model_type: str = 'deeppavlov')
+
+   Bases: :py:obj:`TransformerEmbedder`
+
+
+   Text embedder optimized for Russian language.
+
+
+   .. py:attribute:: model_mapping
 
 

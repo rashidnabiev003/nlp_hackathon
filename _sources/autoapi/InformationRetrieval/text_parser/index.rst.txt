@@ -10,6 +10,7 @@ Attributes
 .. autoapisummary::
 
    InformationRetrieval.text_parser.MetadataValue
+   InformationRetrieval.text_parser.logger
 
 
 Classes
@@ -19,12 +20,15 @@ Classes
 
    InformationRetrieval.text_parser.ParsedText
    InformationRetrieval.text_parser.TextParser
+   InformationRetrieval.text_parser.DocumentChunker
 
 
 Module Contents
 ---------------
 
 .. py:data:: MetadataValue
+
+.. py:data:: logger
 
 .. py:class:: ParsedText
 
@@ -49,7 +53,7 @@ Module Contents
 
 .. py:class:: TextParser(language: str = 'en')
 
-   Text parser for IR tasks with basic preprocessing capabilities.
+   Text parser using LangChain for IR tasks.
 
 
    .. py:attribute:: language
@@ -57,31 +61,10 @@ Module Contents
 
 
 
-   .. py:attribute:: _sentence_end_markers
+   .. py:attribute:: lang_map
 
 
-   .. py:method:: tokenize(text: str) -> List[str]
-
-      Tokenize text into words.
-
-      Args:
-              text: Input text to tokenize
-
-      Returns:
-              List of tokens
-
-
-
-   .. py:method:: count_sentences(text: str) -> int
-
-      Count number of sentences in text.
-
-      Args:
-              text: Input text
-
-      Returns:
-              Number of sentences
-
+   .. py:attribute:: text_splitter
 
 
    .. py:method:: parse(text: str) -> ParsedText
@@ -89,10 +72,60 @@ Module Contents
       Parse text and return structured information.
 
       Args:
-              text: Input text to parse
+          text: Input text to parse
 
       Returns:
-              ParsedText object with parsing results
+          ParsedText object with parsing results
+
+
+
+.. py:class:: DocumentChunker(chunk_size: int = 500, chunk_overlap: int = 100, language: str = 'russian')
+
+   Handles document chunking using LangChain's text splitter.
+
+
+   .. py:attribute:: chunk_size
+      :value: 500
+
+
+
+   .. py:attribute:: chunk_overlap
+      :value: 100
+
+
+
+   .. py:attribute:: language
+      :value: 'russian'
+
+
+
+   .. py:attribute:: text_splitter
+
+
+   .. py:method:: create_chunks(parsed_text: ParsedText) -> Iterator[ParsedText]
+
+      Create overlapping chunks from parsed text.
+
+      Args:
+          parsed_text: The text to chunk
+
+      Yields:
+          ParsedText: Each chunk of the text as a ParsedText object
+
+
+
+   .. py:method:: _process_chunk(chunk_text: str, chunk_index: int, position: int, parsed_text: ParsedText) -> ParsedText
+
+      Process a single chunk of text.
+
+      Args:
+          chunk_text: The chunk text to process
+          chunk_index: Index of the current chunk
+          position: Current position in text
+          parsed_text: Original parsed text for metadata
+
+      Returns:
+          ParsedText: Processed chunk
 
 
 

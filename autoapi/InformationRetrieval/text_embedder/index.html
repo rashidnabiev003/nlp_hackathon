@@ -16,7 +16,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="InformationRetrieval.text_parser" href="../text_parser/index.html" />
-    <link rel="prev" title="InformationRetrieval" href="../index.html" />
+    <link rel="prev" title="InformationRetrieval.config_manager" href="../config_manager/index.html" />
    
   <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   
@@ -36,72 +36,131 @@
             
   <section id="module-InformationRetrieval.text_embedder">
 <span id="informationretrieval-text-embedder"></span><h1>InformationRetrieval.text_embedder<a class="headerlink" href="#module-InformationRetrieval.text_embedder" title="Link to this heading">¶</a></h1>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#InformationRetrieval.text_embedder.DEFAULT_BATCH_SIZE" title="InformationRetrieval.text_embedder.DEFAULT_BATCH_SIZE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_BATCH_SIZE</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#InformationRetrieval.text_embedder.DEFAULT_RANDOM_SEED" title="InformationRetrieval.text_embedder.DEFAULT_RANDOM_SEED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DEFAULT_RANDOM_SEED</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#InformationRetrieval.text_embedder.RUSSIAN_MODEL_MAPPING" title="InformationRetrieval.text_embedder.RUSSIAN_MODEL_MAPPING"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RUSSIAN_MODEL_MAPPING</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#InformationRetrieval.text_embedder.TextEmbedder" title="InformationRetrieval.text_embedder.TextEmbedder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TextEmbedder</span></code></a></p></td>
-<td><p>Basic text embedder that converts text into vector representations.</p></td>
+<td><p>Abstract base class for text embedding.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#InformationRetrieval.text_embedder.TransformerEmbedder" title="InformationRetrieval.text_embedder.TransformerEmbedder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransformerEmbedder</span></code></a></p></td>
+<td><p>Text embedder using Sentence Transformers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#InformationRetrieval.text_embedder.MultilingualTransformerEmbedder" title="InformationRetrieval.text_embedder.MultilingualTransformerEmbedder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MultilingualTransformerEmbedder</span></code></a></p></td>
+<td><p>Multilingual version of transformer embedder.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#InformationRetrieval.text_embedder.HighQualityTransformerEmbedder" title="InformationRetrieval.text_embedder.HighQualityTransformerEmbedder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HighQualityTransformerEmbedder</span></code></a></p></td>
+<td><p>High quality version of transformer embedder.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#InformationRetrieval.text_embedder.RussianTransformerEmbedder" title="InformationRetrieval.text_embedder.RussianTransformerEmbedder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RussianTransformerEmbedder</span></code></a></p></td>
+<td><p>Text embedder optimized for Russian language.</p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="InformationRetrieval.text_embedder.DEFAULT_BATCH_SIZE">
+<span class="sig-prename descclassname"><span class="pre">InformationRetrieval.text_embedder.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_BATCH_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">32</span></em><a class="headerlink" href="#InformationRetrieval.text_embedder.DEFAULT_BATCH_SIZE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="InformationRetrieval.text_embedder.DEFAULT_RANDOM_SEED">
+<span class="sig-prename descclassname"><span class="pre">InformationRetrieval.text_embedder.</span></span><span class="sig-name descname"><span class="pre">DEFAULT_RANDOM_SEED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">42</span></em><a class="headerlink" href="#InformationRetrieval.text_embedder.DEFAULT_RANDOM_SEED" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="InformationRetrieval.text_embedder.RUSSIAN_MODEL_MAPPING">
+<span class="sig-prename descclassname"><span class="pre">InformationRetrieval.text_embedder.</span></span><span class="sig-name descname"><span class="pre">RUSSIAN_MODEL_MAPPING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">(('deeppavlov',</span> <span class="pre">'DeepPavlov/rubert-base-cased-sentence'),</span> <span class="pre">('sbert',...</span></em><a class="headerlink" href="#InformationRetrieval.text_embedder.RUSSIAN_MODEL_MAPPING" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="InformationRetrieval.text_embedder.TextEmbedder">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">InformationRetrieval.text_embedder.</span></span><span class="sig-name descname"><span class="pre">TextEmbedder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">embedding_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#InformationRetrieval.text_embedder.TextEmbedder" title="Link to this definition">¶</a></dt>
-<dd><p>Basic text embedder that converts text into vector representations.</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">InformationRetrieval.text_embedder.</span></span><span class="sig-name descname"><span class="pre">TextEmbedder</span></span><a class="headerlink" href="#InformationRetrieval.text_embedder.TextEmbedder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract base class for text embedding.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="InformationRetrieval.text_embedder.TextEmbedder.embed">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">embed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../text_parser/index.html#InformationRetrieval.text_parser.ParsedText" title="InformationRetrieval.text_parser.ParsedText"><span class="pre">InformationRetrieval.text_parser.ParsedText</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../text_parser/index.html#InformationRetrieval.text_parser.ParsedText" title="InformationRetrieval.text_parser.ParsedText"><span class="pre">InformationRetrieval.text_parser.ParsedText</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#InformationRetrieval.text_embedder.TextEmbedder.embed" title="Link to this definition">¶</a></dt>
+<dd><p>Convert text into vector embeddings.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="InformationRetrieval.text_embedder.TransformerEmbedder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">InformationRetrieval.text_embedder.</span></span><span class="sig-name descname"><span class="pre">TransformerEmbedder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'all-MiniLM-L6-v2'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#InformationRetrieval.text_embedder.TransformerEmbedder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#InformationRetrieval.text_embedder.TextEmbedder" title="InformationRetrieval.text_embedder.TextEmbedder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TextEmbedder</span></code></a></p>
+<p>Text embedder using Sentence Transformers.</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="InformationRetrieval.text_embedder.TextEmbedder.embedding_dim">
-<span class="sig-name descname"><span class="pre">embedding_dim</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">100</span></em><a class="headerlink" href="#InformationRetrieval.text_embedder.TextEmbedder.embedding_dim" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="InformationRetrieval.text_embedder.TransformerEmbedder.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#InformationRetrieval.text_embedder.TransformerEmbedder.model" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="InformationRetrieval.text_embedder.TextEmbedder._rng">
-<span class="sig-name descname"><span class="pre">_rng</span></span><a class="headerlink" href="#InformationRetrieval.text_embedder.TextEmbedder._rng" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="InformationRetrieval.text_embedder.TransformerEmbedder.embedding_dim">
+<span class="sig-name descname"><span class="pre">embedding_dim</span></span><a class="headerlink" href="#InformationRetrieval.text_embedder.TransformerEmbedder.embedding_dim" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="InformationRetrieval.text_embedder.TextEmbedder._word_vectors">
-<span class="sig-name descname"><span class="pre">_word_vectors</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.typing.NDArray</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#InformationRetrieval.text_embedder.TextEmbedder._word_vectors" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="InformationRetrieval.text_embedder.TransformerEmbedder.batch_size">
+<span class="sig-name descname"><span class="pre">batch_size</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">32</span></em><a class="headerlink" href="#InformationRetrieval.text_embedder.TransformerEmbedder.batch_size" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="InformationRetrieval.text_embedder.TextEmbedder.embed_word">
-<span class="sig-name descname"><span class="pre">embed_word</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">word</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.typing.NDArray</span></span></span><a class="headerlink" href="#InformationRetrieval.text_embedder.TextEmbedder.embed_word" title="Link to this definition">¶</a></dt>
-<dd><p>Create embedding for a single word.</p>
+<dt class="sig sig-object py" id="InformationRetrieval.text_embedder.TransformerEmbedder.embed">
+<span class="sig-name descname"><span class="pre">embed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../text_parser/index.html#InformationRetrieval.text_parser.ParsedText" title="InformationRetrieval.text_parser.ParsedText"><span class="pre">InformationRetrieval.text_parser.ParsedText</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../text_parser/index.html#InformationRetrieval.text_parser.ParsedText" title="InformationRetrieval.text_parser.ParsedText"><span class="pre">InformationRetrieval.text_parser.ParsedText</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#InformationRetrieval.text_embedder.TransformerEmbedder.embed" title="Link to this definition">¶</a></dt>
+<dd><p>Create embeddings using transformer model.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>word: Input word</p>
+<dt>Args:</dt><dd><p>text: ParsedText object or list of ParsedText objects</p>
 </dd>
-<dt>Returns:</dt><dd><p>Word embedding as numpy array</p>
+<dt>Returns:</dt><dd><p>numpy array of embeddings with shape (n_chunks, embedding_dim)</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="InformationRetrieval.text_embedder.TextEmbedder.embed_text">
-<span class="sig-name descname"><span class="pre">embed_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.typing.NDArray</span></span></span><a class="headerlink" href="#InformationRetrieval.text_embedder.TextEmbedder.embed_text" title="Link to this definition">¶</a></dt>
-<dd><p>Create embedding for text or list of tokens.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>text: Input text or list of tokens</p>
-</dd>
-<dt>Returns:</dt><dd><p>Text embedding as numpy array</p>
-</dd>
-</dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="InformationRetrieval.text_embedder.TextEmbedder._get_word_vector">
-<span class="sig-name descname"><span class="pre">_get_word_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">word</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.typing.NDArray</span></span></span><a class="headerlink" href="#InformationRetrieval.text_embedder.TextEmbedder._get_word_vector" title="Link to this definition">¶</a></dt>
-<dd><p>Get vector for a single word, create if not exists.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>word: Input word</p>
-</dd>
-<dt>Returns:</dt><dd><p>Word vector as numpy array</p>
-</dd>
-</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="InformationRetrieval.text_embedder.MultilingualTransformerEmbedder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">InformationRetrieval.text_embedder.</span></span><span class="sig-name descname"><span class="pre">MultilingualTransformerEmbedder</span></span><a class="headerlink" href="#InformationRetrieval.text_embedder.MultilingualTransformerEmbedder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#InformationRetrieval.text_embedder.TransformerEmbedder" title="InformationRetrieval.text_embedder.TransformerEmbedder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransformerEmbedder</span></code></a></p>
+<p>Multilingual version of transformer embedder.</p>
 </dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="InformationRetrieval.text_embedder.HighQualityTransformerEmbedder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">InformationRetrieval.text_embedder.</span></span><span class="sig-name descname"><span class="pre">HighQualityTransformerEmbedder</span></span><a class="headerlink" href="#InformationRetrieval.text_embedder.HighQualityTransformerEmbedder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#InformationRetrieval.text_embedder.TransformerEmbedder" title="InformationRetrieval.text_embedder.TransformerEmbedder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransformerEmbedder</span></code></a></p>
+<p>High quality version of transformer embedder.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="InformationRetrieval.text_embedder.RussianTransformerEmbedder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">InformationRetrieval.text_embedder.</span></span><span class="sig-name descname"><span class="pre">RussianTransformerEmbedder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'deeppavlov'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#InformationRetrieval.text_embedder.RussianTransformerEmbedder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#InformationRetrieval.text_embedder.TransformerEmbedder" title="InformationRetrieval.text_embedder.TransformerEmbedder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransformerEmbedder</span></code></a></p>
+<p>Text embedder optimized for Russian language.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="InformationRetrieval.text_embedder.RussianTransformerEmbedder.model_mapping">
+<span class="sig-name descname"><span class="pre">model_mapping</span></span><a class="headerlink" href="#InformationRetrieval.text_embedder.RussianTransformerEmbedder.model_mapping" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -148,7 +207,7 @@
   <li><a href="../../../index.html">Documentation overview</a><ul>
   <li><a href="../../index.html">API Reference</a><ul>
   <li><a href="../index.html">InformationRetrieval</a><ul>
-      <li>Previous: <a href="../index.html" title="previous chapter">InformationRetrieval</a></li>
+      <li>Previous: <a href="../config_manager/index.html" title="previous chapter">InformationRetrieval.config_manager</a></li>
       <li>Next: <a href="../text_parser/index.html" title="next chapter">InformationRetrieval.text_parser</a></li>
   </ul></li>
   </ul></li>

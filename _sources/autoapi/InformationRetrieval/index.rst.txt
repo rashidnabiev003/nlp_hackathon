@@ -15,6 +15,8 @@ Submodules
 .. toctree::
    :maxdepth: 1
 
+   /autoapi/InformationRetrieval/chunk_helper/index
+   /autoapi/InformationRetrieval/config_manager/index
    /autoapi/InformationRetrieval/text_embedder/index
    /autoapi/InformationRetrieval/text_parser/index
 

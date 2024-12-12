@@ -1,0 +1,65 @@
+InformationRetrieval.chunk_helper
+=================================
+
+.. py:module:: InformationRetrieval.chunk_helper
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   InformationRetrieval.chunk_helper.ChunkHelper
+
+
+Module Contents
+---------------
+
+.. py:class:: ChunkHelper(language: str)
+
+   Helper class for document chunking operations.
+
+
+   .. py:attribute:: language
+
+
+   .. py:method:: get_chunk_end_index(tokens: List[str], start_idx: int) -> int
+
+      Get end index for chunk starting at start_idx.
+
+      Args:
+          tokens: List of tokens
+          start_idx: Starting index for the chunk
+
+      Returns:
+          int: End index for the chunk
+
+
+
+   .. py:method:: get_next_start_index(tokens: List[str], current_start: int) -> int
+
+      Get start index for next chunk.
+
+      Args:
+          tokens: List of tokens
+          current_start: Current chunk start index
+
+      Returns:
+          int: Start index for next chunk
+
+
+
+   .. py:method:: find_sentence_boundary(tokens: List[str], start_idx: int, direction: int) -> int
+
+      Find the nearest sentence boundary.
+
+      Args:
+          tokens: List of tokens
+          start_idx: Starting index
+          direction: 1 for forward search, -1 for backward search
+
+      Returns:
+          int: Index of the nearest sentence boundary
+
+
+

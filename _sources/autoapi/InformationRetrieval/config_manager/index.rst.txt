@@ -1,0 +1,37 @@
+InformationRetrieval.config_manager
+===================================
+
+.. py:module:: InformationRetrieval.config_manager
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   InformationRetrieval.config_manager.ConfigManager
+
+
+Module Contents
+---------------
+
+.. py:class:: ConfigManager(config_path: Optional[Union[str, pathlib.Path]] = None)
+
+   Manages configuration settings for the IR system.
+
+
+   .. py:attribute:: language_map
+
+
+   .. py:method:: get_language(language_code: str) -> str
+
+      Get LangChain language string for specified language code.
+
+      Args:
+          language_code: Language code
+
+      Returns:
+          str: Language string. Defaults to 'english' if language not found.
+
+
+
