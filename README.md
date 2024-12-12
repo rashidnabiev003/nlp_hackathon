@@ -37,7 +37,6 @@ make install_all
 
 ## Документация
 
-
 - **[Документация по библиотеке](https://rashidnabiev003.github.io/nlp_hackathon/)** - содержит описания из doc-string используемых модулей
 
 ## Лицензия

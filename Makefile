@@ -1,6 +1,6 @@
 ﻿.PHONY: *
 
-VENV=venv
+VENV=.venv
 PYTHON=$(VENV)/bin/python3
 DEVICE=gpu
 DATASET_FOLDER := dataset
@@ -15,9 +15,12 @@ pre_commit_install:
 	@echo "=== Installing pre-commit ==="
 	$(PYTHON) -m pre_commit install
 
+install_requirements:
+	$(PYTHON) -m pip install -r requirements/requirements-$(DEVICE).txt
+
 install_all: venv
 	@echo "=== Installing common dependencies ==="
-	$(PYTHON) -m pip install -r requirements/requirements-$(DEVICE).txt
+	make install_requirements
 
 	make pre_commit_install
 

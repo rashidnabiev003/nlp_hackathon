@@ -21,6 +21,8 @@ repos:
     rev: 'v1.13.0'
     hooks:
       - id: mypy
+        # args: ["--install-types", "--non-interactive"]
+        additional_dependencies: [types-PyYAML]
   - repo: 'https://github.com/pre-commit/pre-commit-hooks'
     rev: v5.0.0
     hooks:
