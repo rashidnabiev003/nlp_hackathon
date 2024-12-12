@@ -7,3 +7,4 @@ torch
 torchao
 torchmetrics
 torchvision
+transformers
