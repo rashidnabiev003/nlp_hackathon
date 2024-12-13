@@ -1,0 +1,100 @@
+metrics.ngramscorer
+===================
+
+.. py:module:: metrics.ngramscorer
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   metrics.ngramscorer.NgramScorer
+
+
+Module Contents
+---------------
+
+.. py:class:: NgramScorer
+
+   Helper class for n-gram based scoring operations.
+
+
+   .. py:method:: compute_rouge_n(candidate_tokens: List[str], reference_tokens: List[str], ngram_size: int) -> Tuple[float, float, float]
+
+      Compute ROUGE-N scores.
+
+      Args:
+          candidate_tokens: Candidate tokens
+          reference_tokens: Reference tokens
+          ngram_size: N-gram size
+
+      Returns:
+          Tuple of precision, recall, and F1 scores
+
+
+
+   .. py:method:: tokenize(text: str) -> List[str]
+
+      Tokenize text into words.
+
+      Args:
+          text: Input text
+
+      Returns:
+          List of tokens
+
+
+
+   .. py:method:: _get_ngram_counts(tokens: List[str], ngram_size: int) -> collections.Counter[Tuple[str, Ellipsis]]
+
+      Get n-grams from tokens.
+
+      Args:
+          tokens: List of tokens
+          ngram_size: N-gram size
+
+      Returns:
+          Counter of n-grams
+
+
+
+   .. py:method:: _compute_overlap(counter1: collections.Counter[Tuple[str, Ellipsis]], counter2: collections.Counter[Tuple[str, Ellipsis]]) -> int
+
+      Compute overlap between two counters.
+
+      Args:
+          counter1: First counter
+          counter2: Second counter
+
+      Returns:
+          Sum of minimum counts for shared elements
+
+
+
+   .. py:method:: _divide_or_zero(numerator: int, denominator: int) -> float
+
+      Safely divide two numbers, returning 0 if denominator is 0.
+
+      Args:
+          numerator: Number to divide
+          denominator: Number to divide by
+
+      Returns:
+          Result of division or 0 if denominator is 0
+
+
+
+   .. py:method:: _compute_f1(precision: float, recall: float) -> float
+
+      Compute F1 score from precision and recall.
+
+      Args:
+          precision: Precision score
+          recall: Recall score
+
+      Returns:
+          F1 score
+
+
+

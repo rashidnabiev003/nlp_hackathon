@@ -1,0 +1,36 @@
+RAG.model
+=========
+
+.. py:module:: RAG.model
+
+.. autoapi-nested-parse::
+
+   Model initialization and pipeline setup for the LLaMA RAG system.
+
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   RAG.model.get_model_pipeline
+
+
+Module Contents
+---------------
+
+.. py:function:: get_model_pipeline(device: str = 'cuda') -> Tuple[transformers.AutoTokenizer, transformers.AutoModelForCausalLM, transformers.pipeline]
+
+   Initialize the model pipeline with the specified configuration.
+
+   Args:
+       device: Device to run the model on ('cuda' or 'cpu')
+
+   Returns:
+       Tuple containing:
+           - tokenizer: Configured tokenizer
+           - model: Loaded and configured model
+           - pipeline: Text generation pipeline
+
+

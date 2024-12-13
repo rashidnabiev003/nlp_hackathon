@@ -1,0 +1,47 @@
+RAG.config
+==========
+
+.. py:module:: RAG.config
+
+.. autoapi-nested-parse::
+
+   Configuration settings for the LLaMA RAG system.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   RAG.config.CHUNK_SIZE
+   RAG.config.OVERLAP_SIZE
+   RAG.config.TOP_K_DOCS
+   RAG.config.MODEL_CONFIG
+   RAG.config.PROMPT_PARTS
+
+
+Module Contents
+---------------
+
+.. py:data:: CHUNK_SIZE
+   :type:  int
+   :value: 500
+
+
+.. py:data:: OVERLAP_SIZE
+   :type:  int
+   :value: 100
+
+
+.. py:data:: TOP_K_DOCS
+   :type:  int
+   :value: 5
+
+
+.. py:data:: MODEL_CONFIG
+   :type:  Mapping[str, str | int | float]
+
+.. py:data:: PROMPT_PARTS
+   :type:  Sequence[str]
+

@@ -1,0 +1,63 @@
+metrics.rouge
+=============
+
+.. py:module:: metrics.rouge
+
+.. autoapi-nested-parse::
+
+   ROUGE metric implementation for lexical similarity evaluation.
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   metrics.rouge.RougeMetric
+
+
+Module Contents
+---------------
+
+.. py:class:: RougeMetric
+
+   ROUGE metric for lexical similarity evaluation.
+
+
+   .. py:attribute:: _default_ngram_sizes
+      :value: (1, 2)
+
+
+
+   .. py:attribute:: _scorer
+
+
+   .. py:method:: compute_scores(candidate: str, reference: str, rouge_types: Optional[List[int]] = None) -> Dict[str, Dict[str, float]]
+
+      Compute ROUGE scores for different n-gram sizes.
+
+      Args:
+          candidate: Candidate text
+          reference: Reference text
+          rouge_types: List of n-gram sizes to compute. Defaults to [1, 2]
+
+      Returns:
+          Dictionary with ROUGE scores for each n-gram size
+
+
+
+   .. py:method:: _compute_scores_for_types(candidate_tokens: List[str], reference_tokens: List[str], rouge_types: List[int]) -> Dict[str, Dict[str, float]]
+
+      Compute ROUGE scores for given n-gram sizes.
+
+      Args:
+          candidate_tokens: Tokenized candidate text
+          reference_tokens: Tokenized reference text
+          rouge_types: List of n-gram sizes to compute
+
+      Returns:
+          Dictionary with ROUGE scores for each n-gram size
+
+
+

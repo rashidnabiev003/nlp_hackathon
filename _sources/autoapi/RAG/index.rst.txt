@@ -1,0 +1,33 @@
+RAG
+===
+
+.. py:module:: RAG
+
+.. autoapi-nested-parse::
+
+   RAG package for LM tasks.
+
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/RAG/chat/index
+   /autoapi/RAG/config/index
+   /autoapi/RAG/document_parser/index
+   /autoapi/RAG/document_processor/index
+   /autoapi/RAG/html_processor/index
+   /autoapi/RAG/io_utils/index
+   /autoapi/RAG/llama_module/index
+   /autoapi/RAG/llama_solo/index
+   /autoapi/RAG/model/index
+   /autoapi/RAG/model_manager/index
+   /autoapi/RAG/table_formatter/index
+   /autoapi/RAG/table_query/index
+   /autoapi/RAG/text_processor/index
+   /autoapi/RAG/types/index
+
+

@@ -1,0 +1,26 @@
+metrics
+=======
+
+.. py:module:: metrics
+
+.. autoapi-nested-parse::
+
+   Metrics for evaluating retrieval and QA system performance.
+
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/metrics/bert_score/index
+   /autoapi/metrics/evaluator/index
+   /autoapi/metrics/ngramscorer/index
+   /autoapi/metrics/retrieval_metrics/index
+   /autoapi/metrics/rouge/index
+   /autoapi/metrics/rouge_evaluator/index
+   /autoapi/metrics/types/index
+
+

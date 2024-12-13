@@ -1,0 +1,61 @@
+RAG.model_manager
+=================
+
+.. py:module:: RAG.model_manager
+
+.. autoapi-nested-parse::
+
+   Model management utilities for the LLaMA RAG system.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   RAG.model_manager.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   RAG.model_manager.initialize_huggingface
+   RAG.model_manager.create_model_pipeline
+   RAG.model_manager.create_qa_chain
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: initialize_huggingface() -> None
+
+   Initialize HuggingFace environment.
+
+   Raises:
+       ValueError: If HUGGINGFACE_TOKEN is not set
+
+
+.. py:function:: create_model_pipeline() -> tuple[transformers.AutoTokenizer, transformers.AutoModelForCausalLM, transformers.pipeline]
+
+   Create model pipeline.
+
+   Returns:
+       tuple: (tokenizer, model, pipeline)
+
+
+.. py:function:: create_qa_chain(text_chunks: list[str]) -> langchain.chains.RetrievalQA
+
+   Create QA chain with vector store.
+
+   Args:
+       text_chunks: Processed text chunks
+
+   Returns:
+       RetrievalQA: Configured QA chain
+
+

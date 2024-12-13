@@ -1,0 +1,57 @@
+RAG.llama_module
+================
+
+.. py:module:: RAG.llama_module
+
+.. autoapi-nested-parse::
+
+   Main module for the LLaMA RAG system.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   RAG.llama_module.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   RAG.llama_module.create_qa_chain
+   RAG.llama_module.process_docx
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: create_qa_chain(llm: langchain.llms.HuggingFacePipeline, vectorstore: langchain.vectorstores.FAISS) -> langchain.chains.RetrievalQA
+
+   Create a RetrievalQA chain with the specified prompt template.
+
+   Args:
+       llm: Configured language model pipeline
+       vectorstore: Initialized FAISS vector store
+
+   Returns:
+       RetrievalQA: Configured question-answering chain
+
+
+.. py:function:: process_docx(file_path: str, output_format: str = 'txt') -> None
+
+   Process a DOCX file and initialize QA chain.
+
+   This function handles the complete pipeline from document parsing to
+   QA chain initialization and chat interface setup.
+
+   Args:
+       file_path: Path to the DOCX file to process
+       output_format: Output format for parsing ('txt' or 'md')
+
+

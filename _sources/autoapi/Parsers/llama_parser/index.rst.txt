@@ -1,0 +1,91 @@
+Parsers.llama_parser
+====================
+
+.. py:module:: Parsers.llama_parser
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   Parsers.llama_parser._create_parser
+   Parsers.llama_parser._format_page_content
+   Parsers.llama_parser._save_content
+   Parsers.llama_parser._process_documents
+   Parsers.llama_parser.parse_md
+   Parsers.llama_parser.parse_txt
+
+
+Module Contents
+---------------
+
+.. py:function:: _create_parser(result_type: str) -> llama_parse.LlamaParse
+
+   Create a LlamaParse instance with common configuration.
+
+   Args:
+       result_type: Type of parsing result ('markdown' or 'txt')
+
+   Returns:
+       LlamaParse: Configured parser instance
+
+
+.. py:function:: _format_page_content(page_num: int, document: llama_index.core.Document) -> str
+
+   Format content for a single page.
+
+   Args:
+       page_num: Page number
+       document: Document to format
+
+   Returns:
+       str: Formatted page content
+
+
+.. py:function:: _save_content(doc_content: str, output_path: str) -> str
+
+   Save content to file.
+
+   Args:
+       doc_content: Content to save
+       output_path: Path where to save the content
+
+   Returns:
+       str: Path to the saved file
+
+
+.. py:function:: _process_documents(documents: List[llama_index.core.Document], output_path: str) -> str
+
+   Process documents and save to file.
+
+   Args:
+       documents: List of documents to process
+       output_path: Path where to save the output file
+
+   Returns:
+       str: Path to the saved output file
+
+
+.. py:function:: parse_md(file_path: str) -> str
+
+   Parse document to markdown format.
+
+   Args:
+       file_path: Path to the document to parse
+
+   Returns:
+       str: Path to the output markdown file
+
+
+.. py:function:: parse_txt(file_path: str) -> str
+
+   Parse document to text format.
+
+   Args:
+       file_path: Path to the document to parse
+
+   Returns:
+       str: Path to the output text file
+
+

@@ -1,0 +1,178 @@
+RAG.chat
+========
+
+.. py:module:: RAG.chat
+
+.. autoapi-nested-parse::
+
+   Chat interface for the LLaMA RAG system.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   RAG.chat.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   RAG.chat.IOHandler
+   RAG.chat.ConsoleIO
+   RAG.chat.LoggingIO
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   RAG.chat.handle_user_input
+   RAG.chat.process_question
+   RAG.chat.run_chat_session
+   RAG.chat.chat
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: IOHandler
+
+   Bases: :py:obj:`Protocol`
+
+
+   Protocol for handling I/O operations.
+
+
+   .. py:method:: read_input(prompt: str) -> str
+
+      Read input with given prompt.
+
+      Args:
+          prompt: Input prompt to display
+
+
+
+   .. py:method:: write_output(message: str) -> None
+
+      Write output message.
+
+      Args:
+          message: Message to write
+
+
+
+.. py:class:: ConsoleIO(input_stream: TextIO = sys.stdin, output_stream: TextIO = sys.stdout)
+
+   Bases: :py:obj:`IOHandler`
+
+
+   Handles console I/O operations.
+
+
+   .. py:attribute:: input_stream
+
+
+   .. py:attribute:: output_stream
+
+
+   .. py:method:: read_input(prompt: str) -> str
+
+      Read input from configured input stream.
+
+      Args:
+          prompt: Input prompt to display
+
+      Returns:
+          str: User input
+
+
+
+   .. py:method:: write_output(message: str) -> None
+
+      Write output to configured output stream.
+
+      Args:
+          message: Message to write
+
+
+
+.. py:class:: LoggingIO(console_io: IOHandler)
+
+   Bases: :py:obj:`IOHandler`
+
+
+   Handles I/O operations with logging.
+
+
+   .. py:attribute:: console_io
+
+
+   .. py:method:: read_input(prompt: str) -> str
+
+      Read and log input.
+
+      Args:
+          prompt: Input prompt to display
+
+      Returns:
+          str: User input
+
+
+
+   .. py:method:: write_output(message: str) -> None
+
+      Write and log output.
+
+      Args:
+          message: Message to write
+
+
+
+.. py:function:: handle_user_input(io_handler: IOHandler) -> Optional[str]
+
+   Get and process user input.
+
+   Args:
+       io_handler: I/O handler
+
+   Returns:
+       Optional[str]: Processed user input or None if user wants to exit
+
+
+.. py:function:: process_question(query: str, qa_chain: langchain.chains.RetrievalQA) -> str
+
+   Process a single question through the QA chain.
+
+   Args:
+       query: User's question
+       qa_chain: Configured QA chain
+
+   Returns:
+       str: Model's response or error message
+
+
+.. py:function:: run_chat_session(qa_chain: langchain.chains.RetrievalQA, io_handler: IOHandler) -> None
+
+   Run the chat session loop.
+
+   Args:
+       qa_chain: Configured QA chain
+       io_handler: I/O handler
+
+
+.. py:function:: chat(qa_chain: langchain.chains.RetrievalQA) -> None
+
+   Interactive chat interface for the QA system.
+
+   Args:
+       qa_chain: Configured RetrievalQA chain instance
+
+

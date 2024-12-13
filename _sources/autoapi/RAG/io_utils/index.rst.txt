@@ -1,0 +1,64 @@
+RAG.io_utils
+============
+
+.. py:module:: RAG.io_utils
+
+.. autoapi-nested-parse::
+
+   I/O utilities for the LLaMA RAG system.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   RAG.io_utils.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   RAG.io_utils.get_exit_commands
+   RAG.io_utils.process_input
+   RAG.io_utils.get_user_input
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: get_exit_commands() -> frozenset[str]
+
+   Get set of exit commands.
+
+   Returns:
+       frozenset[str]: Set of exit commands
+
+
+.. py:function:: process_input(query: str) -> Optional[str]
+
+   Process user input.
+
+   Args:
+       query: Raw user input
+
+   Returns:
+       Optional[str]: Processed input or None if exit command
+
+
+.. py:function:: get_user_input(prompt: str = 'Question: ') -> Optional[str]
+
+   Get user input safely.
+
+   Args:
+       prompt: Input prompt to display
+
+   Returns:
+       Optional[str]: User input or None if exit command
+
+

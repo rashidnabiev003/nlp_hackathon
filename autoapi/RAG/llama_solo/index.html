@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>RAG.llama_solo &#8212; IR from docx for LM 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="RAG.model" href="../model/index.html" />
+    <link rel="prev" title="RAG.llama_module" href="../llama_module/index.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-RAG.llama_solo">
+<span id="rag-llama-solo"></span><h1>RAG.llama_solo<a class="headerlink" href="#module-RAG.llama_solo" title="Link to this heading">¶</a></h1>
+<p>Main module for standalone LLaMA RAG system.</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#RAG.llama_solo.logger" title="RAG.llama_solo.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logger</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#RAG.llama_solo.process_query" title="RAG.llama_solo.process_query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process_query</span></code></a>(→ str)</p></td>
+<td><p>Process user query.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#RAG.llama_solo.handle_query" title="RAG.llama_solo.handle_query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">handle_query</span></code></a>(→ bool)</p></td>
+<td><p>Handle a single query.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#RAG.llama_solo.initialize_qa_system" title="RAG.llama_solo.initialize_qa_system"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialize_qa_system</span></code></a>(...)</p></td>
+<td><p>Initialize QA system.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#RAG.llama_solo.run_chat_session" title="RAG.llama_solo.run_chat_session"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_chat_session</span></code></a>(→ None)</p></td>
+<td><p>Run interactive chat session.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="RAG.llama_solo.logger">
+<span class="sig-prename descclassname"><span class="pre">RAG.llama_solo.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#RAG.llama_solo.logger" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RAG.llama_solo.process_query">
+<span class="sig-prename descclassname"><span class="pre">RAG.llama_solo.</span></span><span class="sig-name descname"><span class="pre">process_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qa_chain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">langchain.chains.RetrievalQA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../types/index.html#RAG.types.DocumentData" title="RAG.types.DocumentData"><span class="pre">RAG.types.DocumentData</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#RAG.llama_solo.process_query" title="Link to this definition">¶</a></dt>
+<dd><p>Process user query.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>query: User query
+qa_chain: QA chain
+doc_data: Document data</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: Response to query</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RAG.llama_solo.handle_query">
+<span class="sig-prename descclassname"><span class="pre">RAG.llama_solo.</span></span><span class="sig-name descname"><span class="pre">handle_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qa_chain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">langchain.chains.RetrievalQA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../types/index.html#RAG.types.DocumentData" title="RAG.types.DocumentData"><span class="pre">RAG.types.DocumentData</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#RAG.llama_solo.handle_query" title="Link to this definition">¶</a></dt>
+<dd><p>Handle a single query.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>query: User query
+qa_chain: QA chain
+doc_data: Document data</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: True if chat should continue, False otherwise</p>
+</dd>
+<dt>Raises:</dt><dd><p>Exception: If query processing fails</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RAG.llama_solo.initialize_qa_system">
+<span class="sig-prename descclassname"><span class="pre">RAG.llama_solo.</span></span><span class="sig-name descname"><span class="pre">initialize_qa_system</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docx_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">langchain.chains.RetrievalQA</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../types/index.html#RAG.types.DocumentData" title="RAG.types.DocumentData"><span class="pre">RAG.types.DocumentData</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#RAG.llama_solo.initialize_qa_system" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize QA system.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>docx_path: Path to DOCX file</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: (QA chain, Document data)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RAG.llama_solo.run_chat_session">
+<span class="sig-prename descclassname"><span class="pre">RAG.llama_solo.</span></span><span class="sig-name descname"><span class="pre">run_chat_session</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qa_chain</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">langchain.chains.RetrievalQA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../types/index.html#RAG.types.DocumentData" title="RAG.types.DocumentData"><span class="pre">RAG.types.DocumentData</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#RAG.llama_solo.run_chat_session" title="Link to this definition">¶</a></dt>
+<dd><p>Run interactive chat session.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>qa_chain: QA chain
+doc_data: Document data</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">IR from docx for LM</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">RAG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Parsers/index.html">Parsers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../metrics/index.html">metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../InformationRetrieval/index.html">InformationRetrieval</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">API Reference</a><ul>
+  <li><a href="../index.html">RAG</a><ul>
+      <li>Previous: <a href="../llama_module/index.html" title="previous chapter">RAG.llama_module</a></li>
+      <li>Next: <a href="../model/index.html" title="next chapter">RAG.model</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Тимур и его команда.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../../../_sources/autoapi/RAG/llama_solo/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

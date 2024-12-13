@@ -1,0 +1,79 @@
+metrics.rouge_evaluator
+=======================
+
+.. py:module:: metrics.rouge_evaluator
+
+.. autoapi-nested-parse::
+
+   ROUGE evaluation functionality.
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   metrics.rouge_evaluator.RougeEvaluator
+
+
+Module Contents
+---------------
+
+.. py:class:: RougeEvaluator(rouge_types: Optional[Sequence[int]] = None)
+
+   ROUGE evaluation functionality.
+
+
+   .. py:attribute:: _default_rouge_types
+      :value: (1, 2)
+
+
+
+   .. py:attribute:: rouge
+
+
+   .. py:attribute:: rouge_types
+      :value: [1, 2]
+
+
+
+   .. py:method:: compute_single_scores(candidate: str, reference: str) -> Dict[str, metrics.types.RougeScores]
+
+      Compute ROUGE scores for a single pair of texts.
+
+      Args:
+          candidate: Candidate text
+          reference: Reference text
+
+      Returns:
+          Dictionary with ROUGE scores for each n-gram size
+
+
+
+   .. py:method:: compute_average_scores(candidates: List[str], references: List[str]) -> Dict[str, metrics.types.RougeScores]
+
+      Compute average ROUGE scores for multiple pairs of texts.
+
+      Args:
+          candidates: List of candidate texts
+          references: List of reference texts
+
+      Returns:
+          Dictionary with averaged ROUGE scores for each n-gram size
+
+
+
+   .. py:method:: _compute_averages(all_scores: metrics.types.RawRougeScoresList, rouge_type: str) -> metrics.types.RougeScores
+
+      Compute average ROUGE scores for a specific type.
+
+      Args:
+          all_scores: List of ROUGE scores for all pairs
+          rouge_type: Type of ROUGE score to average
+
+      Returns:
+          Averaged ROUGE scores
+
+
+

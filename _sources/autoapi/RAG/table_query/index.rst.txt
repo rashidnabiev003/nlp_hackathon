@@ -1,0 +1,67 @@
+RAG.table_query
+===============
+
+.. py:module:: RAG.table_query
+
+.. autoapi-nested-parse::
+
+   Table querying functionality for the LLaMA RAG system.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   RAG.table_query.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   RAG.table_query.get_table_cell
+   RAG.table_query.build_cell_pattern
+   RAG.table_query.parse_cell_request
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: get_table_cell(dataframes: List[pandas.DataFrame], table_index: int, row_index: int, column_name: str) -> str
+
+   Get cell value from specified table location.
+
+   Args:
+       dataframes: List of dataframes
+       table_index: 1-based table index
+       row_index: 1-based row index
+       column_name: Column name
+
+   Returns:
+       str: Cell value or error message
+
+
+.. py:function:: build_cell_pattern() -> str
+
+   Build regex pattern for cell requests.
+
+   Returns:
+       str: Compiled regex pattern
+
+
+.. py:function:: parse_cell_request(query: str) -> Optional[Tuple[int, int, str]]
+
+   Parse direct cell request from query.
+
+   Args:
+       query: User query string
+
+   Returns:
+       Optional[Tuple[int, int, str]]: (table index, row index, column name) if found
+
+

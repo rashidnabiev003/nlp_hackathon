@@ -1,0 +1,98 @@
+metrics.types
+=============
+
+.. py:module:: metrics.types
+
+.. autoapi-nested-parse::
+
+   Type definitions for metrics.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   metrics.types.Number
+   metrics.types.RelevanceList
+   metrics.types.RelevanceLists
+   metrics.types.RawRougeScores
+   metrics.types.RawRougeScoresList
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   metrics.types.RougeScores
+   metrics.types.TextSimilarityScores
+   metrics.types.RetrievalScores
+
+
+Module Contents
+---------------
+
+.. py:data:: Number
+
+.. py:data:: RelevanceList
+
+.. py:data:: RelevanceLists
+
+.. py:data:: RawRougeScores
+
+.. py:data:: RawRougeScoresList
+
+.. py:class:: RougeScores
+
+   Bases: :py:obj:`TypedDict`
+
+
+   Type for ROUGE scores.
+
+
+   .. py:attribute:: precision
+      :type:  float
+
+
+   .. py:attribute:: recall
+      :type:  float
+
+
+   .. py:attribute:: f1
+      :type:  float
+
+
+.. py:class:: TextSimilarityScores
+
+   Bases: :py:obj:`TypedDict`
+
+
+   Type for text similarity scores.
+
+
+   .. py:attribute:: bert_score
+      :type:  Union[float, List[float]]
+
+
+   .. py:attribute:: rouge
+      :type:  Dict[str, RougeScores]
+
+
+.. py:class:: RetrievalScores
+
+   Bases: :py:obj:`TypedDict`
+
+
+   Type for retrieval scores.
+
+
+   .. py:attribute:: mrr
+      :type:  float
+
+
+   .. py:attribute:: ndcg
+      :type:  float
+
+

@@ -1,0 +1,119 @@
+metrics.evaluator
+=================
+
+.. py:module:: metrics.evaluator
+
+.. autoapi-nested-parse::
+
+   Main evaluator class that combines all metrics.
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   metrics.evaluator.Evaluator
+
+
+Module Contents
+---------------
+
+.. py:class:: Evaluator(bert_model_name: str = 'DeepPavlov/rubert-base-cased', rouge_types: Optional[Sequence[int]] = None)
+
+   Main evaluator class that combines all metrics.
+
+
+   .. py:attribute:: bert_score
+
+
+   .. py:attribute:: rouge
+
+
+   .. py:attribute:: retrieval_metrics
+
+
+   .. py:method:: evaluate_text_similarity(candidates: Union[str, List[str]], references: Union[str, List[str]]) -> metrics.types.TextSimilarityScores
+
+      Evaluate text similarity using BERTScore and ROUGE.
+
+      Args:
+          candidates: Candidate text(s)
+          references: Reference text(s)
+
+      Returns:
+          Dictionary with all text similarity metrics
+
+      Raises:
+          ValueError: If candidates and references are not both strings or both lists
+
+
+
+   .. py:method:: evaluate_retrieval(relevance_lists: metrics.types.RelevanceLists, top_limit: Optional[int] = None) -> metrics.types.RetrievalScores
+
+      Evaluate retrieval performance using MRR and NDCG.
+
+      Args:
+          relevance_lists: List of relevance score lists
+          top_limit: Consider only top-k results
+
+      Returns:
+          Dictionary with retrieval metrics
+
+
+
+   .. py:method:: _are_single_texts(candidates: Union[str, List[str]], references: Union[str, List[str]]) -> bool
+
+      Check if inputs are single texts.
+
+      Args:
+          candidates: Candidate text(s)
+          references: Reference text(s)
+
+      Returns:
+          True if both inputs are strings
+
+
+
+   .. py:method:: _are_text_lists(candidates: Union[str, List[str]], references: Union[str, List[str]]) -> bool
+
+      Check if inputs are lists of texts.
+
+      Args:
+          candidates: Candidate text(s)
+          references: Reference text(s)
+
+      Returns:
+          True if both inputs are lists
+
+
+
+   .. py:method:: _evaluate_single_texts(candidate: str, reference: str, bert_scores: Union[float, List[float]]) -> metrics.types.TextSimilarityScores
+
+      Evaluate similarity for single texts.
+
+      Args:
+          candidate: Candidate text
+          reference: Reference text
+          bert_scores: BERTScore result
+
+      Returns:
+          Similarity scores
+
+
+
+   .. py:method:: _evaluate_text_lists(candidates: List[str], references: List[str], bert_scores: Union[float, List[float]]) -> metrics.types.TextSimilarityScores
+
+      Evaluate similarity for lists of texts.
+
+      Args:
+          candidates: List of candidate texts
+          references: List of reference texts
+          bert_scores: BERTScore results
+
+      Returns:
+          Similarity scores
+
+
+

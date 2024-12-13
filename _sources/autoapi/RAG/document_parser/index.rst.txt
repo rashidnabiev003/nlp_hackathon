@@ -1,0 +1,67 @@
+RAG.document_parser
+===================
+
+.. py:module:: RAG.document_parser
+
+.. autoapi-nested-parse::
+
+   Document parsing module for the LLaMA RAG system.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   RAG.document_parser.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   RAG.document_parser.extract_paragraphs
+   RAG.document_parser.extract_tables
+   RAG.document_parser.parse_docx
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: extract_paragraphs(soup: bs4.BeautifulSoup) -> List[str]
+
+   Extract paragraphs from HTML soup.
+
+   Args:
+       soup: BeautifulSoup object containing HTML
+
+   Returns:
+       List[str]: Extracted paragraphs
+
+
+.. py:function:: extract_tables(soup: bs4.BeautifulSoup) -> tuple[List[List[List[str]]], List[pandas.DataFrame]]
+
+   Extract tables from HTML soup.
+
+   Args:
+       soup: BeautifulSoup object containing HTML
+
+   Returns:
+       tuple: (raw tables data, pandas dataframes)
+
+
+.. py:function:: parse_docx(filepath: str) -> RAG.types.DocumentData
+
+   Parse DOCX file into structured data.
+
+   Args:
+       filepath: Path to DOCX file
+
+   Returns:
+       DocumentData: Structured document data
+
+

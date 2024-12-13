@@ -1,0 +1,96 @@
+RAG.text_processor
+==================
+
+.. py:module:: RAG.text_processor
+
+.. autoapi-nested-parse::
+
+   Text processing utilities for the LLaMA RAG system.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   RAG.text_processor.morph
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   RAG.text_processor.preprocess_russian_text
+   RAG.text_processor.process_text_line
+   RAG.text_processor.process_paragraphs
+   RAG.text_processor.process_text_chunks
+   RAG.text_processor.chunk_text
+
+
+Module Contents
+---------------
+
+.. py:data:: morph
+
+.. py:function:: preprocess_russian_text(text: str) -> str
+
+   Lemmatize Russian text using pymorphy2.
+
+   Args:
+       text: Input text string to be preprocessed
+
+   Returns:
+       str: Preprocessed and lemmatized text with normalized word forms
+
+
+.. py:function:: process_text_line(line: str, lemmatize: bool) -> str
+
+   Process a single line of text.
+
+   Args:
+       line: Text line to process
+       lemmatize: Whether to apply lemmatization
+
+   Returns:
+       str: Processed text line
+
+
+.. py:function:: process_paragraphs(paragraphs: List[str], lemmatize: bool) -> List[str]
+
+   Process paragraphs into text chunks.
+
+   Args:
+       paragraphs: List of paragraphs to process
+       lemmatize: Whether to apply lemmatization
+
+   Returns:
+       List[str]: Processed text chunks
+
+
+.. py:function:: process_text_chunks(doc_data: RAG.types.DocumentData, lemmatize: bool = False) -> List[str]
+
+   Process document data into text chunks.
+
+   Args:
+       doc_data: Document data to process
+       lemmatize: Whether to apply lemmatization
+
+   Returns:
+       List[str]: Processed text chunks
+
+
+.. py:function:: chunk_text(text_lines: collections.abc.Sequence[str], chunk_size: int = CHUNK_SIZE, overlap_size: int = OVERLAP_SIZE) -> List[str]
+
+   Split text lines into overlapping chunks.
+
+   Args:
+       text_lines: Sequence of text lines to process
+       chunk_size: Maximum size of each chunk
+       overlap_size: Size of overlap between chunks
+
+   Returns:
+       List[str]: List of processed text chunks with specified overlap
+
+

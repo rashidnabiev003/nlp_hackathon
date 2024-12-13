@@ -1,0 +1,94 @@
+RAG.document_processor
+======================
+
+.. py:module:: RAG.document_processor
+
+.. autoapi-nested-parse::
+
+   Document processing module for the LLaMA RAG system.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   RAG.document_processor.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   RAG.document_processor.validate_file
+   RAG.document_processor.parse_document
+   RAG.document_processor.initialize_model
+   RAG.document_processor.create_vectorstore
+   RAG.document_processor.parse_docx
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: validate_file(file_path: str, output_format: str) -> None
+
+   Validate input file and format.
+
+   Args:
+       file_path: Path to the input file
+       output_format: Desired output format
+
+   Raises:
+       FileNotFoundError: If the input file doesn't exist
+       ValueError: If the output format is not supported
+
+
+.. py:function:: parse_document(file_path: str, output_format: str) -> List[str]
+
+   Parse document and extract text chunks.
+
+   Args:
+       file_path: Path to the input file
+       output_format: Desired output format
+
+   Returns:
+       List[str]: Extracted text chunks
+
+
+.. py:function:: initialize_model() -> langchain.llms.HuggingFacePipeline
+
+   Initialize the language model.
+
+   Returns:
+       HuggingFacePipeline: Initialized language model
+
+   Raises:
+       ValueError: If HUGGINGFACE_TOKEN is not set
+
+
+.. py:function:: create_vectorstore(text_chunks: List[str]) -> langchain.vectorstores.FAISS
+
+   Create a vector store from text chunks.
+
+   Args:
+       text_chunks: List of text chunks to index
+
+   Returns:
+       FAISS: Initialized vector store
+
+
+.. py:function:: parse_docx(filepath: str) -> RAG.types.DocumentData
+
+   Parse DOCX file into structured data.
+
+   Args:
+       filepath: Path to DOCX file
+
+   Returns:
+       DocumentData: Structured document data
+
+

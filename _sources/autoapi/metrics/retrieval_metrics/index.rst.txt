@@ -1,0 +1,134 @@
+metrics.retrieval_metrics
+=========================
+
+.. py:module:: metrics.retrieval_metrics
+
+.. autoapi-nested-parse::
+
+   Retrieval-specific metrics implementation.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   metrics.retrieval_metrics.Number
+   metrics.retrieval_metrics.GAIN_METHOD_STANDARD
+   metrics.retrieval_metrics.GAIN_METHOD_EXPONENTIAL
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   metrics.retrieval_metrics.RetrievalMetrics
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   metrics.retrieval_metrics._compute_gain
+   metrics.retrieval_metrics._compute_dcg
+
+
+Module Contents
+---------------
+
+.. py:data:: Number
+
+.. py:data:: GAIN_METHOD_STANDARD
+   :value: 'standard'
+
+
+.. py:data:: GAIN_METHOD_EXPONENTIAL
+   :value: 'exponential'
+
+
+.. py:function:: _compute_gain(relevance: Number, method: str = GAIN_METHOD_STANDARD) -> float
+
+   Compute gain for a relevance score.
+
+   Args:
+       relevance: Relevance score
+       method: Gain calculation method ('standard' or 'exponential')
+
+   Returns:
+       Computed gain value
+
+
+.. py:function:: _compute_dcg(relevance_scores: Sequence[Number], method: str = GAIN_METHOD_STANDARD) -> float
+
+   Compute Discounted Cumulative Gain (DCG).
+
+   Args:
+       relevance_scores: List of relevance scores
+       method: Gain calculation method ('standard' or 'exponential')
+
+   Returns:
+       DCG score
+
+
+.. py:class:: RetrievalMetrics
+
+   Collection of retrieval-specific metrics.
+
+
+   .. py:method:: compute_mrr(relevance_lists: Sequence[Sequence[Number]], top_limit: Optional[int] = None) -> float
+
+      Compute average MRR over multiple queries.
+
+      Args:
+          relevance_lists: List of relevance score lists
+          top_limit: Consider only top-k results
+
+      Returns:
+          Average MRR score
+
+
+
+   .. py:method:: compute_ndcg(relevance_lists: Sequence[Sequence[Number]], top_limit: Optional[int] = None, method: str = GAIN_METHOD_STANDARD) -> float
+
+      Compute average NDCG over multiple queries.
+
+      Args:
+          relevance_lists: List of relevance score lists
+          top_limit: Calculate NDCG@k
+          method: Gain calculation method ('standard' or 'exponential')
+
+      Returns:
+          Average NDCG score
+
+
+
+   .. py:method:: _compute_single_mrr(relevance_scores: Sequence[Number], top_limit: Optional[int] = None) -> float
+
+      Calculate Mean Reciprocal Rank (MRR) for a single query.
+
+      Args:
+          relevance_scores: List of relevance scores
+          top_limit: Consider only top-k results
+
+      Returns:
+          MRR score
+
+
+
+   .. py:method:: _compute_single_ndcg(relevance_scores: Sequence[Number], top_limit: Optional[int] = None, method: str = GAIN_METHOD_STANDARD) -> float
+
+      Calculate NDCG for a single query.
+
+      Args:
+          relevance_scores: List of relevance scores
+          top_limit: Calculate NDCG@k
+          method: Gain calculation method ('standard' or 'exponential')
+
+      Returns:
+          NDCG score
+
+
+

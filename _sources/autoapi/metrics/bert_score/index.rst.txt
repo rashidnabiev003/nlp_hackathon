@@ -1,0 +1,107 @@
+metrics.bert_score
+==================
+
+.. py:module:: metrics.bert_score
+
+.. autoapi-nested-parse::
+
+   BERTScore implementation for semantic similarity evaluation.
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   metrics.bert_score.BERTScoreMetric
+
+
+Module Contents
+---------------
+
+.. py:class:: BERTScoreMetric(model_name: str = _default_model, device: Optional[str] = None)
+
+   BERTScore metric for semantic similarity evaluation.
+
+
+   .. py:attribute:: _default_model
+      :value: 'DeepPavlov/rubert-base-cased'
+
+
+
+   .. py:attribute:: _max_sequence_length
+      :value: 512
+
+
+
+   .. py:attribute:: _cached_device
+      :type:  Optional[str]
+      :value: None
+
+
+
+   .. py:attribute:: device
+      :value: 'cpu'
+
+
+
+   .. py:attribute:: tokenizer
+      :value: False
+
+
+
+   .. py:attribute:: model
+
+
+   .. py:method:: compute_score(candidates: Union[str, List[str]], references: Union[str, List[str]]) -> Union[float, List[float]]
+
+      Compute BERTScore between candidate and reference texts.
+
+      Args:
+          candidates: Candidate text(s)
+          references: Reference text(s)
+
+      Returns:
+          BERTScore(s) between candidate and reference texts
+
+      Raises:
+          ValueError: If candidates and references are not both strings or both lists,
+                     or if they are lists of different lengths
+
+
+
+   .. py:method:: _compute_single_score(candidate: str, reference: str) -> float
+
+      Compute BERTScore for a single pair of texts.
+
+      Args:
+          candidate: Candidate text
+          reference: Reference text
+
+      Returns:
+          BERTScore between candidate and reference
+
+
+
+   .. py:method:: _get_embeddings(text: str) -> torch.Tensor
+
+      Get BERT embeddings for text.
+
+      Args:
+          text: Input text
+
+      Returns:
+          Text embeddings
+
+
+
+   .. py:method:: _get_default_device() -> str
+
+      Get default device for computation.
+
+      Returns:
+          Device string ('cuda' if available, else CPU)
+
+
+

@@ -1,0 +1,81 @@
+RAG.html_processor
+==================
+
+.. py:module:: RAG.html_processor
+
+.. autoapi-nested-parse::
+
+   HTML processing utilities for the LLaMA RAG system.
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   RAG.html_processor.TableData
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   RAG.html_processor.extract_paragraphs
+   RAG.html_processor.process_table
+   RAG.html_processor.extract_tables
+
+
+Module Contents
+---------------
+
+.. py:class:: TableData
+
+   Bases: :py:obj:`NamedTuple`
+
+
+   Structure for table data.
+
+
+   .. py:attribute:: raw_data
+      :type:  List[List[List[str]]]
+
+
+   .. py:attribute:: dataframes
+      :type:  List[pandas.DataFrame]
+
+
+.. py:function:: extract_paragraphs(soup: bs4.BeautifulSoup) -> List[str]
+
+   Extract paragraphs from HTML soup.
+
+   Args:
+       soup: BeautifulSoup object containing HTML
+
+   Returns:
+       List[str]: Extracted paragraphs
+
+
+.. py:function:: process_table(table_element: bs4.BeautifulSoup) -> tuple[List[List[str]], pandas.DataFrame]
+
+   Process a single table element.
+
+   Args:
+       table_element: BeautifulSoup table element
+
+   Returns:
+       tuple: (raw table data, pandas dataframe)
+
+
+.. py:function:: extract_tables(soup: bs4.BeautifulSoup) -> TableData
+
+   Extract tables from HTML soup.
+
+   Args:
+       soup: BeautifulSoup object containing HTML
+
+   Returns:
+       TableData: Extracted table data
+
+

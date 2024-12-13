@@ -1,0 +1,84 @@
+RAG.llama_solo
+==============
+
+.. py:module:: RAG.llama_solo
+
+.. autoapi-nested-parse::
+
+   Main module for standalone LLaMA RAG system.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   RAG.llama_solo.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   RAG.llama_solo.process_query
+   RAG.llama_solo.handle_query
+   RAG.llama_solo.initialize_qa_system
+   RAG.llama_solo.run_chat_session
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: process_query(query: str, qa_chain: langchain.chains.RetrievalQA, doc_data: RAG.types.DocumentData) -> str
+
+   Process user query.
+
+   Args:
+       query: User query
+       qa_chain: QA chain
+       doc_data: Document data
+
+   Returns:
+       str: Response to query
+
+
+.. py:function:: handle_query(query: Optional[str], qa_chain: langchain.chains.RetrievalQA, doc_data: RAG.types.DocumentData) -> bool
+
+   Handle a single query.
+
+   Args:
+       query: User query
+       qa_chain: QA chain
+       doc_data: Document data
+
+   Returns:
+       bool: True if chat should continue, False otherwise
+
+   Raises:
+       Exception: If query processing fails
+
+
+.. py:function:: initialize_qa_system(docx_path: str) -> tuple[langchain.chains.RetrievalQA, RAG.types.DocumentData]
+
+   Initialize QA system.
+
+   Args:
+       docx_path: Path to DOCX file
+
+   Returns:
+       tuple: (QA chain, Document data)
+
+
+.. py:function:: run_chat_session(qa_chain: langchain.chains.RetrievalQA, doc_data: RAG.types.DocumentData) -> None
+
+   Run interactive chat session.
+
+   Args:
+       qa_chain: QA chain
+       doc_data: Document data
+
+
