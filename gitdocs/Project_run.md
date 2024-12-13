@@ -8,4 +8,4 @@
 4. Выбираете какой код из двух запустить
    1. `llama-solo.py` QA RAG bot  с использованием преобразования таблицы в HTML
    2. `llama_module.py` QA RAG bot с использованием  LLaMaParse(baseline)
- 5.Для просмотра метрик запустите `metrics_eval.pynb`
+5. Для просмотра метрик запустите `metrics_eval.pynb`
