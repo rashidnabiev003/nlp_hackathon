@@ -1,6 +1,7 @@
 ﻿--find-links https://download.pytorch.org/whl/cu124
 -r requirements-base.txt
 -r requirements-dev.txt
+-r requirements-local-rag.txt
 
 torch
 torchao

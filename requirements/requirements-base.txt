@@ -21,3 +21,5 @@ types-PyYAML
 langchain
 plotly
 umap-learn
+mammoth
+beautifulsoup4
