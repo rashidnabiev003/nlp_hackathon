@@ -7,96 +7,101 @@ import pandas as pd
 from RAG.types import DocumentData
 
 
-def format_cell(column: str, cell_content: str) -> str:
-    """Format a cell value with its column name.
+class TableFormatter:
+    """Handles table formatting operations."""
 
-    Args:
-        column: Column name
-        cell_content: Cell content
+    @classmethod
+    def format_cell(cls, column: str, cell_content: str) -> str:
+        """Format a cell value with its column name.
 
-    Returns:
-        str: Formatted cell value
-    """
-    return f'{column}: {cell_content}'
+        Args:
+            column: Column name
+            cell_content: Cell content
 
+        Returns:
+            str: Formatted cell value
+        """
+        return '{0}: {1}'.format(column, cell_content)
 
-def format_table_prefix(table_idx: int) -> str:
-    """Format table prefix.
+    @classmethod
+    def format_table_prefix(cls, table_idx: int) -> str:
+        """Format table prefix.
 
-    Args:
-        table_idx: Table index
+        Args:
+            table_idx: Table index
 
-    Returns:
-        str: Formatted table prefix
-    """
-    return f'Table {table_idx + 1}'
+        Returns:
+            str: Formatted table prefix
+        """
+        return 'Table {0}'.format(table_idx + 1)
 
+    @classmethod
+    def format_row_prefix(cls, row_idx: int) -> str:
+        """Format row prefix.
 
-def format_row_prefix(row_idx: int) -> str:
-    """Format row prefix.
+        Args:
+            row_idx: Row index
 
-    Args:
-        row_idx: Row index
+        Returns:
+            str: Formatted row prefix
+        """
+        return 'Row {0}'.format(row_idx + 1)
 
-    Returns:
-        str: Formatted row prefix
-    """
-    return f'Row {row_idx + 1}'
+    @classmethod
+    def format_location(cls, table_idx: int, row_idx: int) -> str:
+        """Format table and row location.
 
+        Args:
+            table_idx: Table index
+            row_idx: Row index
 
-def format_location(table_idx: int, row_idx: int) -> str:
-    """Format table and row location.
+        Returns:
+            str: Formatted location string
+        """
+        table_prefix = cls.format_table_prefix(table_idx)
+        row_prefix = cls.format_row_prefix(row_idx)
+        return '{0}, {1}:'.format(table_prefix, row_prefix)
 
-    Args:
-        table_idx: Table index
-        row_idx: Row index
+    @classmethod
+    def process_row_data(cls, row_data: pd.Series) -> List[str]:
+        """Process row data into formatted cells.
 
-    Returns:
-        str: Formatted location string
-    """
-    table_prefix = format_table_prefix(table_idx)
-    row_prefix = format_row_prefix(row_idx)
-    return f'{table_prefix}, {row_prefix}:'
+        Args:
+            row_data: Row data
 
+        Returns:
+            List[str]: List of formatted cells
+        """
+        formatted_cells = []
+        for column, cell_content in row_data.items():
+            if pd.notna(cell_content) and str(cell_content).strip():
+                formatted_cells.append(cls.format_cell(column, str(cell_content)))
+        return formatted_cells
 
-def process_row_data(row_data: pd.Series) -> List[str]:
-    """Process row data into formatted cells.
+    @classmethod
+    def format_row(
+        cls,
+        table_idx: int,
+        row_idx: int,
+        row_data: pd.Series,
+    ) -> Optional[str]:
+        """Format a table row into a text string.
 
-    Args:
-        row_data: Row data
+        Args:
+            table_idx: Table index
+            row_idx: Row index
+            row_data: Row data
 
-    Returns:
-        List[str]: List of formatted cells
-    """
-    formatted_cells = []
-    for column, cell_content in row_data.items():
-        if pd.notna(cell_content) and str(cell_content).strip():
-            formatted_cells.append(format_cell(column, str(cell_content)))
-    return formatted_cells
+        Returns:
+            Optional[str]: Formatted row text or None if empty
+        """
+        formatted_cells = cls.process_row_data(row_data)
+        if not formatted_cells:
+            return None
 
-
-def format_row(
-    table_idx: int,
-    row_idx: int,
-    row_data: pd.Series,
-) -> Optional[str]:
-    """Format a table row into a text string.
-
-    Args:
-        table_idx: Table index
-        row_idx: Row index
-        row_data: Row data
-
-    Returns:
-        Optional[str]: Formatted row text or None if empty
-    """
-    formatted_cells = process_row_data(row_data)
-    if not formatted_cells:
-        return None
-
-    location = format_location(table_idx, row_idx)
-    content = ' | '.join(formatted_cells)
-    return f'{location} {content}'
+        location = cls.format_location(table_idx, row_idx)
+        cell_text = ' | '.join(formatted_cells)
+        return '{0} {1}'.format(location, cell_text)
 
 
 def process_table_row(
@@ -116,12 +121,12 @@ def process_table_row(
     Returns:
         Optional[str]: Processed row text or None
     """
-    row_text = format_row(table_idx, row_idx, row)
+    row_text = TableFormatter.format_row(table_idx, row_idx, row)
     if not row_text:
         return None
 
-    processed = process_line(row_text)
-    return processed if processed else None
+    processed_text = process_line(row_text)
+    return processed_text if processed_text else None
 
 
 def process_tables(
@@ -141,7 +146,8 @@ def process_tables(
 
     for table_idx, df in enumerate(doc_data['dataframes']):
         for row_idx, row in df.iterrows():
-            if processed := process_table_row(table_idx, row_idx, row, process_line):
-                chunks.append(processed)
+            processed_row = process_table_row(table_idx, row_idx, row, process_line)
+            if processed_row:
+                chunks.append(processed_row)
 
     return chunks

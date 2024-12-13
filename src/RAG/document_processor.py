@@ -11,10 +11,7 @@ from huggingface_hub import login
 from langchain import embeddings, llms, vectorstores
 
 from Parsers.llama_parser import parse_md, parse_txt
-from RAG.html_processor import extract_paragraphs, extract_tables
-from RAG.model import get_model_pipeline
-from RAG.text_processor import chunk_text
-from RAG.types import DocumentData
+from RAG import html_processor, model, text_processor, types
 
 logger = logging.getLogger(__name__)
 
@@ -51,7 +48,7 @@ def parse_document(file_path: str, output_format: str) -> List[str]:
     parsed_file_path = parser(file_path)
 
     with open(parsed_file_path, 'r', encoding='utf-8') as doc_file:
-        return chunk_text(doc_file.readlines())
+        return text_processor.chunk_text(doc_file.readlines())
 
 
 def initialize_model() -> llms.HuggingFacePipeline:
@@ -70,7 +67,7 @@ def initialize_model() -> llms.HuggingFacePipeline:
     login(token=huggingface_token)
     torch.cuda.empty_cache()
 
-    _, _, llm_pipeline = get_model_pipeline()
+    _, _, llm_pipeline = model.get_model_pipeline()
     return llms.HuggingFacePipeline(pipeline=llm_pipeline)
 
 
@@ -89,7 +86,7 @@ def create_vectorstore(text_chunks: List[str]) -> vectorstores.FAISS:
     return vectorstores.FAISS.from_texts(text_chunks, model_embeddings)
 
 
-def parse_docx(filepath: str) -> DocumentData:
+def parse_docx(filepath: str) -> types.DocumentData:
     """Parse DOCX file into structured data.
 
     Args:
@@ -99,15 +96,14 @@ def parse_docx(filepath: str) -> DocumentData:
         DocumentData: Structured document data
     """
     with open(filepath, 'rb') as docx_file:
-        conversion_result = mammoth.convert_to_html(docx_file)
-        html_content = conversion_result.value
+        html_content = mammoth.convert_to_html(docx_file).value
 
     soup = BeautifulSoup(html_content, 'html.parser')
-    paragraphs = extract_paragraphs(soup)
-    table_data = extract_tables(soup)
+    paragraphs = html_processor.extract_paragraphs(soup)
+    tables_data, dataframes = html_processor.extract_tables(soup)
 
-    return DocumentData(
+    return types.DocumentData(
         paragraphs=paragraphs,
-        tables=table_data.raw_data,
-        dataframes=table_data.dataframes,
+        tables=types.TableList(tables_data),
+        dataframes=dataframes,
     )
