@@ -1,0 +1,5 @@
+chromadb==0.5.23
+gigachain==0.2.16
+gigachain_community==0.2.16.post3
+python_docx==1.1.2
+urllib3==2.2.3
