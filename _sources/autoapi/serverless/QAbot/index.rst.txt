@@ -1,0 +1,80 @@
+serverless.QAbot
+================
+
+.. py:module:: serverless.QAbot
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   serverless.QAbot.ChatBot
+
+
+Module Contents
+---------------
+
+.. py:class:: ChatBot(docx_file_path)
+
+   A chat bot that processes a DOCX file, converts it to text, and uses it
+   to answer questions.
+
+
+   .. py:attribute:: text_file_path
+
+
+   .. py:attribute:: auth_key
+      :value: 'NjMyY2E1MTQtZDg4Ny00MjJjLThmYmUtNjlhOWJhNGVmYzFhOjllZjY4ZDllLTJkN2EtNDg3ZC05ZDc2LTE0ZTZkZjgwZmE3MA=='
+
+
+
+   .. py:attribute:: giga_chat_simple
+
+
+   .. py:attribute:: loader
+
+
+   .. py:attribute:: documents
+
+
+   .. py:attribute:: giga_chat
+
+
+   .. py:attribute:: qa_chain
+
+
+   .. py:attribute:: docx_context
+      :value: 'You are a language model that can respond to the context in docx files, including lists,...
+
+
+
+   .. py:attribute:: message_history
+      :value: []
+
+
+
+   .. py:attribute:: response_blacklist
+      :value: 'Что-то в вашем вопросе меня смущает. Может, поговорим на другую тему? Как у нейросетевой...
+
+
+
+   .. py:method:: get_answer(user_input)
+
+      Processes the user's query and returns an answer.
+
+      :param user_input: A string containing the user's question.
+      :return: A string with the chatbot's answer or an error message
+          if the request is inappropriate.
+
+
+
+   .. py:method:: notebook_demo()
+
+      Provides an interactive demo interface for Jupyter notebooks.
+
+      Returns:
+          self: Returns the chatbot instance for method chaining
+
+
+

@@ -1,0 +1,61 @@
+serverless.dtt
+==============
+
+.. py:module:: serverless.dtt
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   serverless.dtt.DocumentProcessor
+
+
+Module Contents
+---------------
+
+.. py:class:: DocumentProcessor(file_path, llm)
+
+   .. py:attribute:: doc
+
+
+   .. py:attribute:: llm
+
+
+   .. py:method:: find_last_sentence(text_list)
+
+      Find the last non-empty sentence in a list of text elements.
+
+      :param text_list: List of text elements.
+      :return: The last non-empty sentence or a default message if
+          none found.
+
+
+
+   .. py:method:: process_content()
+
+      Process the content of the document, extracting paragraphs and
+      tables.
+
+      :return: A tuple containing processed text and a list of table
+          titles.
+
+
+
+   .. py:method:: save_to_txt(output_file_path)
+
+      Save processed document content to a text file.
+
+      :param output_file_path: Path to the output text file.
+
+
+
+   .. py:method:: get_table_titles()
+
+      Get a list of table titles from the document.
+
+      :return: List of table titles.
+
+
+
