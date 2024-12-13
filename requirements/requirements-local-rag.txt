@@ -1,0 +1,11 @@
+python-docx
+torch
+accelerate
+huggingface_hub
+transformers
+langchain-community
+bitsandbytes
+faiss-gpu
+pymorphy2
+mammoth
+bs4
