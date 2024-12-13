@@ -15,6 +15,7 @@ Attributes
 .. autoapisummary::
 
    RAG.document_parser.logger
+   RAG.document_parser.TEXT_TAGS
 
 
 Functions
@@ -22,7 +23,10 @@ Functions
 
 .. autoapisummary::
 
+   RAG.document_parser._extract_text_from_element
    RAG.document_parser.extract_paragraphs
+   RAG.document_parser._process_table_row
+   RAG.document_parser._create_dataframe
    RAG.document_parser.extract_tables
    RAG.document_parser.parse_docx
 
@@ -31,6 +35,21 @@ Module Contents
 ---------------
 
 .. py:data:: logger
+
+.. py:data:: TEXT_TAGS
+   :value: ('p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li')
+
+
+.. py:function:: _extract_text_from_element(elem: bs4.BeautifulSoup) -> str
+
+   Extract text from a BeautifulSoup element.
+
+   Args:
+       elem: BeautifulSoup element
+
+   Returns:
+       str: Extracted text
+
 
 .. py:function:: extract_paragraphs(soup: bs4.BeautifulSoup) -> List[str]
 
@@ -43,7 +62,29 @@ Module Contents
        List[str]: Extracted paragraphs
 
 
-.. py:function:: extract_tables(soup: bs4.BeautifulSoup) -> tuple[List[List[List[str]]], List[pandas.DataFrame]]
+.. py:function:: _process_table_row(row: bs4.BeautifulSoup) -> List[str]
+
+   Process a single table row.
+
+   Args:
+       row: BeautifulSoup row element
+
+   Returns:
+       List[str]: Row data
+
+
+.. py:function:: _create_dataframe(table_data: List[List[str]]) -> pandas.DataFrame
+
+   Create a DataFrame from table data.
+
+   Args:
+       table_data: Raw table data
+
+   Returns:
+       pd.DataFrame: Created DataFrame
+
+
+.. py:function:: extract_tables(soup: bs4.BeautifulSoup) -> RAG.types.TableExtractionResult
 
    Extract tables from HTML soup.
 
@@ -51,7 +92,7 @@ Module Contents
        soup: BeautifulSoup object containing HTML
 
    Returns:
-       tuple: (raw tables data, pandas dataframes)
+       TableExtractionResult: Tuple of (raw tables data, pandas dataframes)
 
 
 .. py:function:: parse_docx(filepath: str) -> RAG.types.DocumentData

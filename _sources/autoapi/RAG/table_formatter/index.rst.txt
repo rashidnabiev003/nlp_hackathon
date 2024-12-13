@@ -9,17 +9,19 @@ RAG.table_formatter
 
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   RAG.table_formatter.TableFormatter
+
+
 Functions
 ---------
 
 .. autoapisummary::
 
-   RAG.table_formatter.format_cell
-   RAG.table_formatter.format_table_prefix
-   RAG.table_formatter.format_row_prefix
-   RAG.table_formatter.format_location
-   RAG.table_formatter.process_row_data
-   RAG.table_formatter.format_row
    RAG.table_formatter.process_table_row
    RAG.table_formatter.process_tables
 
@@ -27,74 +29,97 @@ Functions
 Module Contents
 ---------------
 
-.. py:function:: format_cell(column: str, cell_content: str) -> str
+.. py:class:: TableFormatter
 
-   Format a cell value with its column name.
-
-   Args:
-       column: Column name
-       cell_content: Cell content
-
-   Returns:
-       str: Formatted cell value
+   Handles table formatting operations.
 
 
-.. py:function:: format_table_prefix(table_idx: int) -> str
-
-   Format table prefix.
-
-   Args:
-       table_idx: Table index
-
-   Returns:
-       str: Formatted table prefix
+   .. py:method:: format_cell(column: str, cell_content: str) -> str
+      :classmethod:
 
 
-.. py:function:: format_row_prefix(row_idx: int) -> str
+      Format a cell value with its column name.
 
-   Format row prefix.
+      Args:
+          column: Column name
+          cell_content: Cell content
 
-   Args:
-       row_idx: Row index
-
-   Returns:
-       str: Formatted row prefix
-
-
-.. py:function:: format_location(table_idx: int, row_idx: int) -> str
-
-   Format table and row location.
-
-   Args:
-       table_idx: Table index
-       row_idx: Row index
-
-   Returns:
-       str: Formatted location string
+      Returns:
+          str: Formatted cell value
 
 
-.. py:function:: process_row_data(row_data: pandas.Series) -> List[str]
 
-   Process row data into formatted cells.
-
-   Args:
-       row_data: Row data
-
-   Returns:
-       List[str]: List of formatted cells
+   .. py:method:: format_table_prefix(table_idx: int) -> str
+      :classmethod:
 
 
-.. py:function:: format_row(table_idx: int, row_idx: int, row_data: pandas.Series) -> Optional[str]
+      Format table prefix.
 
-   Format a table row into a text string.
+      Args:
+          table_idx: Table index
 
-   Args:
-       table_idx: Table index
-       row_idx: Row index
-       row_data: Row data
+      Returns:
+          str: Formatted table prefix
 
-   Returns:
-       Optional[str]: Formatted row text or None if empty
+
+
+   .. py:method:: format_row_prefix(row_idx: int) -> str
+      :classmethod:
+
+
+      Format row prefix.
+
+      Args:
+          row_idx: Row index
+
+      Returns:
+          str: Formatted row prefix
+
+
+
+   .. py:method:: format_location(table_idx: int, row_idx: int) -> str
+      :classmethod:
+
+
+      Format table and row location.
+
+      Args:
+          table_idx: Table index
+          row_idx: Row index
+
+      Returns:
+          str: Formatted location string
+
+
+
+   .. py:method:: process_row_data(row_data: pandas.Series) -> List[str]
+      :classmethod:
+
+
+      Process row data into formatted cells.
+
+      Args:
+          row_data: Row data
+
+      Returns:
+          List[str]: List of formatted cells
+
+
+
+   .. py:method:: format_row(table_idx: int, row_idx: int, row_data: pandas.Series) -> Optional[str]
+      :classmethod:
+
+
+      Format a table row into a text string.
+
+      Args:
+          table_idx: Table index
+          row_idx: Row index
+          row_data: Row data
+
+      Returns:
+          Optional[str]: Formatted row text or None if empty
+
 
 
 .. py:function:: process_table_row(table_idx: int, row_idx: int, row: pandas.Series, process_line: Callable[[str], str]) -> Optional[str]

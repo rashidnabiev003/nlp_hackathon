@@ -9,6 +9,17 @@ RAG.types
 
 
 
+Attributes
+----------
+
+.. autoapisummary::
+
+   RAG.types.TableRow
+   RAG.types.TableData
+   RAG.types.RawTableList
+   RAG.types.TableExtractionResult
+
+
 Classes
 -------
 
@@ -21,6 +32,12 @@ Classes
 Module Contents
 ---------------
 
+.. py:data:: TableRow
+
+.. py:data:: TableData
+
+.. py:data:: RawTableList
+
 .. py:class:: TableList
 
    Bases: :py:obj:`List`\ [\ :py:obj:`List`\ [\ :py:obj:`List`\ [\ :py:obj:`str`\ ]\ ]\ ]
@@ -28,6 +45,8 @@ Module Contents
 
    Type for table data structure.
 
+
+.. py:data:: TableExtractionResult
 
 .. py:class:: DocumentData
 

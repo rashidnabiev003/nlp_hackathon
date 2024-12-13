@@ -44,6 +44,9 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#RAG.document_parser.logger" title="RAG.document_parser.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logger</span></code></a></p></td>
 <td><p></p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#RAG.document_parser.TEXT_TAGS" title="RAG.document_parser.TEXT_TAGS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TEXT_TAGS</span></code></a></p></td>
+<td><p></p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -51,13 +54,22 @@
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#RAG.document_parser.extract_paragraphs" title="RAG.document_parser.extract_paragraphs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_paragraphs</span></code></a>(→ List[str])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#RAG.document_parser._extract_text_from_element" title="RAG.document_parser._extract_text_from_element"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_extract_text_from_element</span></code></a>(→ str)</p></td>
+<td><p>Extract text from a BeautifulSoup element.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#RAG.document_parser.extract_paragraphs" title="RAG.document_parser.extract_paragraphs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_paragraphs</span></code></a>(→ List[str])</p></td>
 <td><p>Extract paragraphs from HTML soup.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#RAG.document_parser.extract_tables" title="RAG.document_parser.extract_tables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_tables</span></code></a>(→ tuple[List[List[List[str]]], ...)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#RAG.document_parser._process_table_row" title="RAG.document_parser._process_table_row"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_process_table_row</span></code></a>(→ List[str])</p></td>
+<td><p>Process a single table row.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#RAG.document_parser._create_dataframe" title="RAG.document_parser._create_dataframe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_create_dataframe</span></code></a>(→ pandas.DataFrame)</p></td>
+<td><p>Create a DataFrame from table data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#RAG.document_parser.extract_tables" title="RAG.document_parser.extract_tables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_tables</span></code></a>(→ RAG.types.TableExtractionResult)</p></td>
 <td><p>Extract tables from HTML soup.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#RAG.document_parser.parse_docx" title="RAG.document_parser.parse_docx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_docx</span></code></a>(→ RAG.types.DocumentData)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#RAG.document_parser.parse_docx" title="RAG.document_parser.parse_docx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parse_docx</span></code></a>(→ RAG.types.DocumentData)</p></td>
 <td><p>Parse DOCX file into structured data.</p></td>
 </tr>
 </tbody>
@@ -69,6 +81,23 @@
 <dt class="sig sig-object py" id="RAG.document_parser.logger">
 <span class="sig-prename descclassname"><span class="pre">RAG.document_parser.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#RAG.document_parser.logger" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="RAG.document_parser.TEXT_TAGS">
+<span class="sig-prename descclassname"><span class="pre">RAG.document_parser.</span></span><span class="sig-name descname"><span class="pre">TEXT_TAGS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('p',</span> <span class="pre">'h1',</span> <span class="pre">'h2',</span> <span class="pre">'h3',</span> <span class="pre">'h4',</span> <span class="pre">'h5',</span> <span class="pre">'h6',</span> <span class="pre">'li')</span></em><a class="headerlink" href="#RAG.document_parser.TEXT_TAGS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RAG.document_parser._extract_text_from_element">
+<span class="sig-prename descclassname"><span class="pre">RAG.document_parser.</span></span><span class="sig-name descname"><span class="pre">_extract_text_from_element</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bs4.BeautifulSoup</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#RAG.document_parser._extract_text_from_element" title="Link to this definition">¶</a></dt>
+<dd><p>Extract text from a BeautifulSoup element.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>elem: BeautifulSoup element</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: Extracted text</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="RAG.document_parser.extract_paragraphs">
@@ -83,13 +112,37 @@
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="RAG.document_parser._process_table_row">
+<span class="sig-prename descclassname"><span class="pre">RAG.document_parser.</span></span><span class="sig-name descname"><span class="pre">_process_table_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bs4.BeautifulSoup</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#RAG.document_parser._process_table_row" title="Link to this definition">¶</a></dt>
+<dd><p>Process a single table row.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>row: BeautifulSoup row element</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[str]: Row data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="RAG.document_parser._create_dataframe">
+<span class="sig-prename descclassname"><span class="pre">RAG.document_parser.</span></span><span class="sig-name descname"><span class="pre">_create_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.DataFrame</span></span></span><a class="headerlink" href="#RAG.document_parser._create_dataframe" title="Link to this definition">¶</a></dt>
+<dd><p>Create a DataFrame from table data.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>table_data: Raw table data</p>
+</dd>
+<dt>Returns:</dt><dd><p>pd.DataFrame: Created DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="RAG.document_parser.extract_tables">
-<span class="sig-prename descclassname"><span class="pre">RAG.document_parser.</span></span><span class="sig-name descname"><span class="pre">extract_tables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">soup</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bs4.BeautifulSoup</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">pandas.DataFrame</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#RAG.document_parser.extract_tables" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">RAG.document_parser.</span></span><span class="sig-name descname"><span class="pre">extract_tables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">soup</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bs4.BeautifulSoup</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">RAG.types.TableExtractionResult</span></span></span><a class="headerlink" href="#RAG.document_parser.extract_tables" title="Link to this definition">¶</a></dt>
 <dd><p>Extract tables from HTML soup.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>soup: BeautifulSoup object containing HTML</p>
 </dd>
-<dt>Returns:</dt><dd><p>tuple: (raw tables data, pandas dataframes)</p>
+<dt>Returns:</dt><dd><p>TableExtractionResult: Tuple of (raw tables data, pandas dataframes)</p>
 </dd>
 </dl>
 </dd></dl>

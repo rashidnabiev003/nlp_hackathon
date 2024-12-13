@@ -9,12 +9,13 @@ RAG.html_processor
 
 
 
-Classes
--------
+Attributes
+----------
 
 .. autoapisummary::
 
-   RAG.html_processor.TableData
+   RAG.html_processor.TEXT_TAGS
+   RAG.html_processor.TABLE_CELL_TAGS
 
 
 Functions
@@ -22,7 +23,10 @@ Functions
 
 .. autoapisummary::
 
+   RAG.html_processor._extract_text
    RAG.html_processor.extract_paragraphs
+   RAG.html_processor._process_row
+   RAG.html_processor._create_dataframe
    RAG.html_processor.process_table
    RAG.html_processor.extract_tables
 
@@ -30,20 +34,23 @@ Functions
 Module Contents
 ---------------
 
-.. py:class:: TableData
-
-   Bases: :py:obj:`NamedTuple`
-
-
-   Structure for table data.
+.. py:data:: TEXT_TAGS
+   :value: ('p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li')
 
 
-   .. py:attribute:: raw_data
-      :type:  List[List[List[str]]]
+.. py:data:: TABLE_CELL_TAGS
+   :value: ('td', 'th')
 
 
-   .. py:attribute:: dataframes
-      :type:  List[pandas.DataFrame]
+.. py:function:: _extract_text(element: bs4.BeautifulSoup) -> str
+
+   Extract text from a BeautifulSoup element.
+
+   Args:
+       element: BeautifulSoup element
+
+   Returns:
+       str: Extracted text
 
 
 .. py:function:: extract_paragraphs(soup: bs4.BeautifulSoup) -> List[str]
@@ -57,7 +64,29 @@ Module Contents
        List[str]: Extracted paragraphs
 
 
-.. py:function:: process_table(table_element: bs4.BeautifulSoup) -> tuple[List[List[str]], pandas.DataFrame]
+.. py:function:: _process_row(row: bs4.BeautifulSoup) -> RAG.types.TableRow
+
+   Process a single table row.
+
+   Args:
+       row: BeautifulSoup row element
+
+   Returns:
+       TableRow: Processed row data
+
+
+.. py:function:: _create_dataframe(table_data: RAG.types.TableData) -> pandas.DataFrame
+
+   Create a DataFrame from table data.
+
+   Args:
+       table_data: Raw table data
+
+   Returns:
+       pd.DataFrame: Created DataFrame
+
+
+.. py:function:: process_table(table_element: bs4.BeautifulSoup) -> tuple[RAG.types.TableData, pandas.DataFrame]
 
    Process a single table element.
 
@@ -68,7 +97,7 @@ Module Contents
        tuple: (raw table data, pandas dataframe)
 
 
-.. py:function:: extract_tables(soup: bs4.BeautifulSoup) -> TableData
+.. py:function:: extract_tables(soup: bs4.BeautifulSoup) -> RAG.types.TableExtractionResult
 
    Extract tables from HTML soup.
 
@@ -76,6 +105,6 @@ Module Contents
        soup: BeautifulSoup object containing HTML
 
    Returns:
-       TableData: Extracted table data
+       TableExtractionResult: Extracted table data
 
 

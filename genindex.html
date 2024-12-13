@@ -83,14 +83,20 @@
 </li>
       <li><a href="autoapi/metrics/bert_score/index.html#metrics.bert_score.BERTScoreMetric._compute_single_score">_compute_single_score() (metrics.bert_score.BERTScoreMetric method)</a>
 </li>
+      <li><a href="autoapi/RAG/document_parser/index.html#RAG.document_parser._create_dataframe">_create_dataframe() (in module RAG.document_parser)</a>
+
+      <ul>
+        <li><a href="autoapi/RAG/html_processor/index.html#RAG.html_processor._create_dataframe">(in module RAG.html_processor)</a>
+</li>
+      </ul></li>
       <li><a href="autoapi/Parsers/llama_parser/index.html#Parsers.llama_parser._create_parser">_create_parser() (in module Parsers.llama_parser)</a>
 </li>
       <li><a href="autoapi/metrics/bert_score/index.html#metrics.bert_score.BERTScoreMetric._default_model">_default_model (metrics.bert_score.BERTScoreMetric attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/metrics/rouge/index.html#metrics.rouge.RougeMetric._default_ngram_sizes">_default_ngram_sizes (metrics.rouge.RougeMetric attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="autoapi/metrics/rouge_evaluator/index.html#metrics.rouge_evaluator.RougeEvaluator._default_rouge_types">_default_rouge_types (metrics.rouge_evaluator.RougeEvaluator attribute)</a>
 </li>
       <li><a href="autoapi/metrics/ngramscorer/index.html#metrics.ngramscorer.NgramScorer._divide_or_zero">_divide_or_zero() (metrics.ngramscorer.NgramScorer method)</a>
@@ -98,6 +104,10 @@
       <li><a href="autoapi/metrics/evaluator/index.html#metrics.evaluator.Evaluator._evaluate_single_texts">_evaluate_single_texts() (metrics.evaluator.Evaluator method)</a>
 </li>
       <li><a href="autoapi/metrics/evaluator/index.html#metrics.evaluator.Evaluator._evaluate_text_lists">_evaluate_text_lists() (metrics.evaluator.Evaluator method)</a>
+</li>
+      <li><a href="autoapi/RAG/html_processor/index.html#RAG.html_processor._extract_text">_extract_text() (in module RAG.html_processor)</a>
+</li>
+      <li><a href="autoapi/RAG/document_parser/index.html#RAG.document_parser._extract_text_from_element">_extract_text_from_element() (in module RAG.document_parser)</a>
 </li>
       <li><a href="autoapi/Parsers/llama_parser/index.html#Parsers.llama_parser._format_page_content">_format_page_content() (in module Parsers.llama_parser)</a>
 </li>
@@ -112,6 +122,10 @@
       <li><a href="autoapi/InformationRetrieval/text_parser/index.html#InformationRetrieval.text_parser.DocumentChunker._process_chunk">_process_chunk() (InformationRetrieval.text_parser.DocumentChunker method)</a>
 </li>
       <li><a href="autoapi/Parsers/llama_parser/index.html#Parsers.llama_parser._process_documents">_process_documents() (in module Parsers.llama_parser)</a>
+</li>
+      <li><a href="autoapi/RAG/html_processor/index.html#RAG.html_processor._process_row">_process_row() (in module RAG.html_processor)</a>
+</li>
+      <li><a href="autoapi/RAG/document_parser/index.html#RAG.document_parser._process_table_row">_process_table_row() (in module RAG.document_parser)</a>
 </li>
       <li><a href="autoapi/Parsers/llama_parser/index.html#Parsers.llama_parser._save_content">_save_content() (in module Parsers.llama_parser)</a>
 </li>
@@ -195,18 +209,14 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/RAG/html_processor/index.html#RAG.html_processor.TableData.dataframes">dataframes (RAG.html_processor.TableData attribute)</a>
-
-      <ul>
-        <li><a href="autoapi/RAG/types/index.html#RAG.types.DocumentData.dataframes">(RAG.types.DocumentData attribute)</a>
+      <li><a href="autoapi/RAG/types/index.html#RAG.types.DocumentData.dataframes">dataframes (RAG.types.DocumentData attribute)</a>
 </li>
-      </ul></li>
       <li><a href="autoapi/InformationRetrieval/text_embedder/index.html#InformationRetrieval.text_embedder.DEFAULT_BATCH_SIZE">DEFAULT_BATCH_SIZE (in module InformationRetrieval.text_embedder)</a>
+</li>
+      <li><a href="autoapi/InformationRetrieval/text_embedder/index.html#InformationRetrieval.text_embedder.DEFAULT_RANDOM_SEED">DEFAULT_RANDOM_SEED (in module InformationRetrieval.text_embedder)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/InformationRetrieval/text_embedder/index.html#InformationRetrieval.text_embedder.DEFAULT_RANDOM_SEED">DEFAULT_RANDOM_SEED (in module InformationRetrieval.text_embedder)</a>
-</li>
       <li><a href="autoapi/metrics/bert_score/index.html#metrics.bert_score.BERTScoreMetric.device">device (metrics.bert_score.BERTScoreMetric attribute)</a>
 </li>
       <li><a href="autoapi/InformationRetrieval/text_parser/index.html#InformationRetrieval.text_parser.DocumentChunker">DocumentChunker (class in InformationRetrieval.text_parser)</a>
@@ -257,17 +267,17 @@
 </li>
       <li><a href="autoapi/InformationRetrieval/chunk_helper/index.html#InformationRetrieval.chunk_helper.ChunkHelper.find_sentence_boundary">find_sentence_boundary() (InformationRetrieval.chunk_helper.ChunkHelper method)</a>
 </li>
-      <li><a href="autoapi/RAG/table_formatter/index.html#RAG.table_formatter.format_cell">format_cell() (in module RAG.table_formatter)</a>
+      <li><a href="autoapi/RAG/table_formatter/index.html#RAG.table_formatter.TableFormatter.format_cell">format_cell() (RAG.table_formatter.TableFormatter class method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/RAG/table_formatter/index.html#RAG.table_formatter.format_location">format_location() (in module RAG.table_formatter)</a>
+      <li><a href="autoapi/RAG/table_formatter/index.html#RAG.table_formatter.TableFormatter.format_location">format_location() (RAG.table_formatter.TableFormatter class method)</a>
 </li>
-      <li><a href="autoapi/RAG/table_formatter/index.html#RAG.table_formatter.format_row">format_row() (in module RAG.table_formatter)</a>
+      <li><a href="autoapi/RAG/table_formatter/index.html#RAG.table_formatter.TableFormatter.format_row">format_row() (RAG.table_formatter.TableFormatter class method)</a>
 </li>
-      <li><a href="autoapi/RAG/table_formatter/index.html#RAG.table_formatter.format_row_prefix">format_row_prefix() (in module RAG.table_formatter)</a>
+      <li><a href="autoapi/RAG/table_formatter/index.html#RAG.table_formatter.TableFormatter.format_row_prefix">format_row_prefix() (RAG.table_formatter.TableFormatter class method)</a>
 </li>
-      <li><a href="autoapi/RAG/table_formatter/index.html#RAG.table_formatter.format_table_prefix">format_table_prefix() (in module RAG.table_formatter)</a>
+      <li><a href="autoapi/RAG/table_formatter/index.html#RAG.table_formatter.TableFormatter.format_table_prefix">format_table_prefix() (RAG.table_formatter.TableFormatter class method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -639,7 +649,7 @@
 </li>
       <li><a href="autoapi/RAG/chat/index.html#RAG.chat.process_question">process_question() (in module RAG.chat)</a>
 </li>
-      <li><a href="autoapi/RAG/table_formatter/index.html#RAG.table_formatter.process_row_data">process_row_data() (in module RAG.table_formatter)</a>
+      <li><a href="autoapi/RAG/table_formatter/index.html#RAG.table_formatter.TableFormatter.process_row_data">process_row_data() (RAG.table_formatter.TableFormatter class method)</a>
 </li>
       <li><a href="autoapi/RAG/html_processor/index.html#RAG.html_processor.process_table">process_table() (in module RAG.html_processor)</a>
 </li>
@@ -766,11 +776,11 @@
         <li><a href="autoapi/RAG/types/index.html#module-RAG.types">module</a>
 </li>
       </ul></li>
-      <li><a href="autoapi/RAG/html_processor/index.html#RAG.html_processor.TableData.raw_data">raw_data (RAG.html_processor.TableData attribute)</a>
-</li>
       <li><a href="autoapi/metrics/types/index.html#metrics.types.RawRougeScores">RawRougeScores (in module metrics.types)</a>
 </li>
       <li><a href="autoapi/metrics/types/index.html#metrics.types.RawRougeScoresList">RawRougeScoresList (in module metrics.types)</a>
+</li>
+      <li><a href="autoapi/RAG/types/index.html#RAG.types.RawTableList">RawTableList (in module RAG.types)</a>
 </li>
       <li><a href="autoapi/RAG/chat/index.html#RAG.chat.ConsoleIO.read_input">read_input() (RAG.chat.ConsoleIO method)</a>
 
@@ -832,9 +842,17 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="autoapi/RAG/html_processor/index.html#RAG.html_processor.TableData">TableData (class in RAG.html_processor)</a>
+      <li><a href="autoapi/RAG/html_processor/index.html#RAG.html_processor.TABLE_CELL_TAGS">TABLE_CELL_TAGS (in module RAG.html_processor)</a>
+</li>
+      <li><a href="autoapi/RAG/types/index.html#RAG.types.TableData">TableData (in module RAG.types)</a>
+</li>
+      <li><a href="autoapi/RAG/types/index.html#RAG.types.TableExtractionResult">TableExtractionResult (in module RAG.types)</a>
+</li>
+      <li><a href="autoapi/RAG/table_formatter/index.html#RAG.table_formatter.TableFormatter">TableFormatter (class in RAG.table_formatter)</a>
 </li>
       <li><a href="autoapi/RAG/types/index.html#RAG.types.TableList">TableList (class in RAG.types)</a>
+</li>
+      <li><a href="autoapi/RAG/types/index.html#RAG.types.TableRow">TableRow (in module RAG.types)</a>
 </li>
       <li><a href="autoapi/RAG/types/index.html#RAG.types.DocumentData.tables">tables (RAG.types.DocumentData attribute)</a>
 </li>
@@ -844,10 +862,16 @@
         <li><a href="autoapi/InformationRetrieval/text_parser/index.html#InformationRetrieval.text_parser.TextParser.text_splitter">(InformationRetrieval.text_parser.TextParser attribute)</a>
 </li>
       </ul></li>
-      <li><a href="autoapi/InformationRetrieval/text_embedder/index.html#InformationRetrieval.text_embedder.TextEmbedder">TextEmbedder (class in InformationRetrieval.text_embedder)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/RAG/document_parser/index.html#RAG.document_parser.TEXT_TAGS">TEXT_TAGS (in module RAG.document_parser)</a>
+
+      <ul>
+        <li><a href="autoapi/RAG/html_processor/index.html#RAG.html_processor.TEXT_TAGS">(in module RAG.html_processor)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/InformationRetrieval/text_embedder/index.html#InformationRetrieval.text_embedder.TextEmbedder">TextEmbedder (class in InformationRetrieval.text_embedder)</a>
+</li>
       <li><a href="autoapi/InformationRetrieval/text_parser/index.html#InformationRetrieval.text_parser.TextParser">TextParser (class in InformationRetrieval.text_parser)</a>
 </li>
       <li><a href="autoapi/metrics/types/index.html#metrics.types.TextSimilarityScores">TextSimilarityScores (class in metrics.types)</a>
