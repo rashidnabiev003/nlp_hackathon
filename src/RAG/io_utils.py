@@ -13,7 +13,7 @@ def get_exit_commands() -> frozenset[str]:
     Returns:
         frozenset[str]: Set of exit commands
     """
-    return frozenset({'exit', 'выход'})
+    return frozenset(('exit', 'выход'))
 
 
 def process_input(query: str) -> Optional[str]:

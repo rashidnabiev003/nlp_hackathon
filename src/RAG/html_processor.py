@@ -1,16 +1,28 @@
 """HTML processing utilities for the LLaMA RAG system."""
 
-from typing import List, NamedTuple
+from typing import List
 
 import pandas as pd
 from bs4 import BeautifulSoup
 
+from RAG.types import TableData as RawTableData
+from RAG.types import TableExtractionResult, TableRow
 
-class TableData(NamedTuple):
-    """Structure for table data."""
+# HTML tags for text extraction
+TEXT_TAGS = ('p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li')
+TABLE_CELL_TAGS = ('td', 'th')
 
-    raw_data: List[List[List[str]]]
-    dataframes: List[pd.DataFrame]
+
+def _extract_text(element: BeautifulSoup) -> str:
+    """Extract text from a BeautifulSoup element.
+
+    Args:
+        element: BeautifulSoup element
+
+    Returns:
+        str: Extracted text
+    """
+    return element.get_text(strip=True)
 
 
 def extract_paragraphs(soup: BeautifulSoup) -> List[str]:
@@ -22,15 +34,39 @@ def extract_paragraphs(soup: BeautifulSoup) -> List[str]:
     Returns:
         List[str]: Extracted paragraphs
     """
-    paragraphs = []
-    for elem in soup.find_all(['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li']):
-        text = elem.get_text(strip=True)
-        if text:
-            paragraphs.append(text)
-    return paragraphs
+    elements = soup.find_all(TEXT_TAGS)
+    texts = [_extract_text(element) for element in elements]
+    return [text for text in texts if text]
 
 
-def process_table(table_element: BeautifulSoup) -> tuple[List[List[str]], pd.DataFrame]:
+def _process_row(row: BeautifulSoup) -> TableRow:
+    """Process a single table row.
+
+    Args:
+        row: BeautifulSoup row element
+
+    Returns:
+        TableRow: Processed row data
+    """
+    cells = row.find_all(TABLE_CELL_TAGS)
+    return [_extract_text(cell) for cell in cells]
+
+
+def _create_dataframe(table_data: RawTableData) -> pd.DataFrame:
+    """Create a DataFrame from table data.
+
+    Args:
+        table_data: Raw table data
+
+    Returns:
+        pd.DataFrame: Created DataFrame
+    """
+    if len(table_data) > 1:
+        return pd.DataFrame(table_data[1:], columns=table_data[0])
+    return pd.DataFrame(table_data)
+
+
+def process_table(table_element: BeautifulSoup) -> tuple[RawTableData, pd.DataFrame]:
     """Process a single table element.
 
     Args:
@@ -40,25 +76,18 @@ def process_table(table_element: BeautifulSoup) -> tuple[List[List[str]], pd.Dat
         tuple: (raw table data, pandas dataframe)
     """
     rows = table_element.find_all('tr')
-    table_data = [[cell.get_text(strip=True) for cell in row.find_all(['td', 'th'])] for row in rows]
-
-    if len(table_data) > 1:
-        headers = table_data[0]
-        df = pd.DataFrame(table_data[1:], columns=headers)
-    else:
-        df = pd.DataFrame(table_data)
-
-    return table_data, df
+    table_data = [_process_row(row) for row in rows]
+    return table_data, _create_dataframe(table_data)
 
 
-def extract_tables(soup: BeautifulSoup) -> TableData:
+def extract_tables(soup: BeautifulSoup) -> TableExtractionResult:
     """Extract tables from HTML soup.
 
     Args:
         soup: BeautifulSoup object containing HTML
 
     Returns:
-        TableData: Extracted table data
+        TableExtractionResult: Extracted table data
     """
     tables_data = []
     dataframes = []
@@ -68,4 +97,4 @@ def extract_tables(soup: BeautifulSoup) -> TableData:
         tables_data.append(table_data)
         dataframes.append(df)
 
-    return TableData(tables_data, dataframes)
+    return tables_data, dataframes

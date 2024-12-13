@@ -2,7 +2,6 @@
 
 import logging
 import os
-from typing import Optional
 
 import torch
 from huggingface_hub import login

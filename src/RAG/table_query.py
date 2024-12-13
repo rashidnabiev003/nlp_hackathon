@@ -68,5 +68,10 @@ def parse_cell_request(query: str) -> Optional[Tuple[int, int, str]]:
 
     table_num = int(match.group(1))
     row_num = int(match.group(2))
-    col_name = match.group(3) if match.group(3) else match.group(4)
+    if match.group(3):
+        col_name = match.group(3)
+    elif match.group(4):
+        col_name = match.group(4)
+    else:
+        col_name = ''
     return table_num, row_num, col_name.strip()

@@ -22,8 +22,8 @@ jobs:
       - name: Install dependencies
         run: make DEVICE=cpu install_all
 
-      # - name: Static code analysis
-      #   run: make ci_static_code_analysis
+      - name: Static code analysis
+        run: make ci_static_code_analysis
 
       - name: Run tests
         run: make ci_test
